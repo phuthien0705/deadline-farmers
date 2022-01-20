@@ -1,0 +1,86 @@
+$primary-color: #EF7D6D;
+$secondary-color: #CA41FC;
+
+.sidebar {
+    height: 100vh;
+    margin: 1.5rem;
+    background: rgb(239,125,109);
+    background: linear-gradient(90deg, rgba(239,125,109,1) 0%, rgba(202,65,252,1) 100%);
+    border-radius: 0.5rem;
+    color: white;
+    &-logo {
+        color: white;
+        position: absolute;
+        display: inline-block;
+        height: 1.5rem;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 1rem;
+    }
+    h3 {
+        position: relative;
+        margin-bottom: 20px;
+        padding: 1rem;
+        font-weight: 600;
+        font-size: 1.5rem;
+        padding-left: 3rem;
+    }
+    li {
+        display: block;
+        padding: 1rem 2.5rem;
+        border-radius: 1rem;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all linear 0.25s;
+        position: relative;
+    }
+    li:before {
+        content: "";
+        display: block;
+        height: 0.5rem;
+        width: 0.5rem;
+        border-radius: 50%;
+        background-color: #fff;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 1.2rem;
+    }
+    li:hover {
+        background-color: white; 
+        color: #000;
+        li:before {
+            background: linear-gradient(90deg, rgba(239,125,109,1) 0%, rgba(202,65,252,1) 100%);
+        }
+    }
+}
+
+.products {
+    margin: 1.5rem;
+    .search-bar {
+        position: relative;
+        input {
+            display: block;
+            height: 3.7rem;
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            border: 2px solid #D9DEFB;
+            padding: 1rem;
+            padding-left: 4rem;
+            font-size: 1rem;
+            transition: all linear 0.2s;
+            background-image: url('./icons/search-gray.png');
+            background-repeat: no-repeat;
+            background-size: 2rem;
+            background-position: 1rem 50%;
+        }
+        input:focus {
+            border: 2px solid $secondary-color;
+            background-image: url('./icons/search-violet.png');
+        }
+    }
+}

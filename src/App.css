@@ -1,3 +1,25 @@
+html {
+  font-family: 'Poppins', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+select,
+textarea,
+input, 
+button {
+  font-family: 'Poppins', sans-serif;
+  font-size: 62.5%;
+  outline: none;
+  resize: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 .App {
   text-align: center;
 }

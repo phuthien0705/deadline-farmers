@@ -4,7 +4,17 @@ import HomeTemplate from "./containers/HomeTemplate";
 import PageNotFound from "./containers/PageNotFound";
 import LoginPage from "./containers/LoginPage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { useEffect } from "react";
+import WebFont from 'webfontloader'
 function App() {
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ['Poppins']
+      }
+    })
+  }, [])
+
   const renderRoutesHome = (routes) => {
     if (routes && routes.length > 0) {
       return routes.map((item, index) => {
