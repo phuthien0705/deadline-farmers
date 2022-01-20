@@ -25,6 +25,7 @@ function App() {
         {renderRoutesHome(routesHome)}
         <Route path="/login" component={LoginPage}></Route>
         <Route path="" component={PageNotFound}></Route>
+        
       </Switch>
     </BrowserRouter>
   );
