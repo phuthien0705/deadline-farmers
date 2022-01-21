@@ -1,0 +1,59 @@
+body {
+  background: #ef7d6d;
+  background: radial-gradient(circle, rgba(239, 125, 109, 0.0508578431) 0%, rgba(202, 65, 252, 0.0536589636) 100%);
+}
+
+.sidebar {
+  height: 100vh;
+  margin: 1.5rem;
+  background: #ef7d6d;
+  background: linear-gradient(90deg, #ef7d6d 0%, #ca41fc 100%);
+  border-radius: 0.5rem;
+  color: white;
+}
+.sidebar-logo {
+  color: white;
+  position: absolute;
+  display: inline-block;
+  height: 1.5rem;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 1rem;
+}
+.sidebar h3 {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+  padding-left: 3rem;
+}
+.sidebar li {
+  display: block;
+  padding: 1rem 2.5rem;
+  border-radius: 1rem;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all linear 0.25s;
+  position: relative;
+}
+.sidebar li:before {
+  content: "";
+  display: block;
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 1.2rem;
+}
+.sidebar li:hover {
+  background-color: white;
+  color: #EF7D6D;
+}
+
+/*# sourceMappingURL=Sidebar.css.map */

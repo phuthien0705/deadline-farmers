@@ -1,0 +1,61 @@
+$primary-color: #EF7D6D;
+$secondary-color: #CA41FC;
+
+body{
+    background: rgb(239,125,109);
+    background: radial-gradient(circle, rgba(239,125,109,0.05085784313725494) 0%, rgba(202,65,252,0.053658963585434205) 100%);
+}
+
+.sidebar {
+    height: 100vh;
+    margin: 1.5rem;
+    background: rgb(239,125,109);
+    background: linear-gradient(90deg, rgba(239,125,109,1) 0%, rgba(202,65,252,1) 100%);
+    border-radius: 0.5rem;
+    color: white;
+    &-logo {
+        color: white;
+        position: absolute;
+        display: inline-block;
+        height: 1.5rem;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 1rem;
+    }
+    h3 {
+        position: relative;
+        margin-bottom: 20px;
+        padding: 1rem;
+        font-weight: 600;
+        font-size: 1.5rem;
+        padding-left: 3rem;
+    }
+    li {
+        display: block;
+        padding: 1rem 2.5rem;
+        border-radius: 1rem;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all linear 0.25s;
+        position: relative;
+    }
+    li:before {
+        content: "";
+        display: block;
+        height: 0.5rem;
+        width: 0.5rem;
+        border-radius: 50%;
+        background-color: #fff;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 1.2rem;
+    }
+    li:hover {
+        background-color: white; 
+        color: $primary-color;
+    }
+}
+
