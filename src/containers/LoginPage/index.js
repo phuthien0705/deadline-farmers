@@ -15,6 +15,7 @@ const LoginPage = () => {
     <div className="login">
       <div className="login__left">
         <h1 className="login__title">Sign in</h1>
+        <h2 class="login__desc">Welcome to Deadline Farmers</h2>
         <form autocomplete="off" id="login__form" className="login__form">
             <div className="login__information">
                 <div className="login__email">
