@@ -1,0 +1,179 @@
+$primary-color: #EF7D6D;
+$font-color: #263238;
+
+html {
+    font-family: 'Poppins', sans-serif;
+    font-size: 62.5%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+select,
+textarea,
+input, 
+button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 62.5%;
+    outline: none;
+    resize: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login {
+    width: 90%;
+    margin: 3rem auto;
+    background-color: white;
+    border-radius: 3rem;
+    display: flex;
+    justify-content: space-between;
+
+    &__left,
+    &__right {
+        width: calc(50% - 2rem);
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+    }
+    &__image {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    &__left {
+        padding: 4rem 4.5rem;
+    }
+
+    &__title {
+        font-size: 5rem;
+        font-weight: 700;
+        color: $font-color;
+        margin-bottom: 5rem;
+    }
+
+    &__desc {
+        font-size: 1.6rem;
+        font-weight: 600;
+        position: relative;
+        padding-left: 8rem;
+        color: $primary-color;
+        margin-bottom: 5rem;
+        &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 7rem;
+            height: 2px;
+            border-radius: 3px;
+            background-color: $primary-color;
+        }
+    }
+
+    &__information {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    &__email,
+    &__password {
+        width: 100%;
+    }
+
+    &__input {
+        width: 100%;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        font-size: 1.6rem;
+        border: 2px solid #eee;
+        border-radius: 1rem;
+        background-color: #f5f5f5;
+        transition: all 0.2s linear;
+        &:focus {
+            border-color: $primary-color;
+        }
+        &--name {
+            margin-bottom: 0;
+            &:focus + .login-name__icon {
+                background-color: $primary-color;
+                color: white;
+            }
+        }
+    }
+
+    &-input {
+        &__box {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__label {
+        display: block;
+        font-size: 1.6rem;
+        color: $font-color;
+        cursor: pointer;
+        &--input {
+            margin-bottom: 1rem;
+        }
+        &--checkbox {
+            position: relative;
+            padding-left: 6rem;
+            line-height: 1.7;
+                &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 3rem;
+                height: 3rem;
+                border: 2px solid #eee;
+                border-radius: 1rem;
+                transition: all 0.2s linear;
+            }
+        }
+    }
+
+    &__button {
+        padding: 2rem 5rem;
+        font-size: 2.5rem;
+        margin: 0.5rem auto 3rem;
+        display: block;
+        background: rgb(239,125,109);
+        background: linear-gradient(90deg, rgba(239,125,109,1) 0%, rgba(202,65,252,1) 100%);
+        color: white;
+        border: 0;
+        border-radius: 10rem;
+        box-shadow: 0 5px 5px 0px rgb(246 114 93 / 60%);
+        cursor: pointer;
+        position: relative;
+    }
+
+    &__redirect {
+        font-size: 1.6rem;
+        line-height: 1.7;
+        a {
+            color: $primary-color;
+        }
+    }
+}
+
+
+
+
