@@ -1,0 +1,30 @@
+$primary-color: #EF7D6D;
+$secondary-color: #CA41FC;
+
+.products {
+    margin: 1.5rem;
+    .search-bar {
+        position: relative;
+        input {
+            display: block;
+            height: 3.7rem;
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            border: 2px solid #D9DEFB;
+            padding: 1rem;
+            padding-left: 4rem;
+            font-size: 1rem;
+            transition: all linear 0.2s;
+            background-image: url('../icons/search-gray.png');
+            background-repeat: no-repeat;
+            background-size: 2rem;
+            background-position: 1rem 50%;
+        }
+        input:focus {
+            border: 2px solid $secondary-color;
+            background-image: url('../icons/search-violet.png');
+        }
+    }
+}
