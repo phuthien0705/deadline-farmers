@@ -7,79 +7,19 @@ const TableCartMobile = ({
   purchasedArr,
 }) => {
   const renderTable = () => {
-    return listCart.map((item) => (
-      <tr key={item.id} className="bg-white border-b-2">
-        <td
-          className="p-3 text-sm text-gray-700 whitespace-nowrap truncate md:text-md"
-          style={{ maxWidth: "20rem" }}
-          width={50}
-        >
-          {item.name}
-        </td>
-        <td className="p-3 text-sm text-gray-700 whitespace-nowrap truncate text-center md:text-md">
-          <img src={item.image} alt={item.name} />
-        </td>
-        <td className="p-3 text-sm text-gray-700 whitespace-nowrap truncate text-center md:text-md">
-          <button
-            className="text-black font-bold py-1 px-4 rounded text-lg "
-            onClick={() => handleUpdateQuantity(item, false)}
-          >
-            -
-          </button>
-          <span className="w-16 inline-block border-x-2 py-1 px-2 text-center">
-            {item.quantity}
-          </span>
-          <button
-            className="text-black font-bold py-1 px-4 rounded text-lg"
-            onClick={() => handleUpdateQuantity(item, true)}
-          >
-            +
-          </button>
-        </td>
-        <td className="p-3 text-sm text-gray-700 whitespace-nowrap truncate text-center md:text-md">
-          {item.price}$
-        </td>
-        <td className="p-3 text-sm text-gray-700 whitespace-nowrap truncate text-center md:text-md">
-          {item.quantity * item.price}$
-        </td>
-        <td className="p-3 text-sm text-gray-700 whitespace-nowrap truncate text-center md:text-md">
-          <input
-            type="checkbox"
-            onChange={() => handleCheck(item.id)}
-            checked={purchasedArr.includes(item.id)}
-          />
-        </td>
-      </tr>
+    return listCart.map((item, index) => (
+      <div key={index} className="border rounded-md w-10/12 p-3 my-2">
+        <input type="checkbox" className="mr-3" />
+        {item.name}
+        <br />
+        <img src={item.image} width={50} alt={item.name} />
+      </div>
     ));
   };
   return (
-    <div>
+    <div className="w-full flex flex-col items-center">
       <h1>MOBILE</h1>
-      <table className="w-10/12 md:w-11/12 sm:w-full mt-3 m-auto drop-shadow-2xl border">
-        <thead className="bg-gray-50 border-b-4 border-gray-300">
-          <tr>
-            <th className="w-20 p-3 text-sm md:text-lg font-semibold tracking-wide text-center">
-              Tên sản phẩm
-            </th>
-            <th className="w-20 p-3 text-sm md:text-lg font-semibold tracking-wide text-center">
-              Hình ảnh
-            </th>
-            <th className="w-20 p-3 text-sm md:text-lg font-semibold tracking-wide text-center">
-              Số lượng
-            </th>
-            <th className="w-20 p-3 text-sm md:text-lg font-semibold tracking-wide text-center">
-              Đơn giá
-            </th>
-            <th className="w-20 p-3 text-sm md:text-lg font-semibold tracking-wide text-center">
-              Thành tiền
-            </th>
-            <th className="w-20 p-3 text-sm md:text-lg font-semibold tracking-wide text-center">
-              Chọn
-            </th>
-          </tr>
-        </thead>
-        <tbody>{renderTable()}</tbody>
-      </table>
+      {renderTable()}
     </div>
   );
 };

@@ -6,6 +6,8 @@ import TableCartMobile from "../../../components/TableCartMobile";
 import { useSelector, useDispatch } from "react-redux";
 import { actFetchListCartItem } from "../../../redux/actions/cartAction";
 import Loader from "../../../components/Loader";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 const PaymentDiv = styled.div({
   position: "fixed",
   bottom: 0,
@@ -36,10 +38,12 @@ const Container = styled.div`
     }
   }
 `;
+
 const CartPage = () => {
   const dispatch = useDispatch();
   const [listCart, setListCart] = useState([]);
   const [purchasedArr, setPurchasedArr] = useState([]);
+  const matches = useMediaQuery("(min-width:600px)");
   const data = useSelector((state) => state.cartReducer.data);
   const loading = useSelector((state) => state.cartReducer.loading);
   useEffect(() => {
@@ -93,22 +97,22 @@ const CartPage = () => {
         <Loader />
       ) : (
         <>
-          <div className="cart w-full">
+          {matches ? (
             <TableCart
               listCart={listCart}
               handleUpdateQuantity={handleUpdateQuantity}
               handleCheck={handleCheck}
               purchasedArr={purchasedArr}
             />
-          </div>
-          <div className="cartMobile w-full">
+          ) : (
             <TableCartMobile
               listCart={listCart}
               handleUpdateQuantity={handleUpdateQuantity}
               handleCheck={handleCheck}
               purchasedArr={purchasedArr}
             />
-          </div>
+          )}
+
           <PaymentDiv className="drop-shadow-md p-5 flex items-center">
             <span className="text-2xl border-r-2 border-slate-400 inline-block w-80 mr-5">
               Tổng thành tiền: {calcTotalMoney()}$
