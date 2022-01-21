@@ -105,7 +105,7 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 TablePaginationActions.propTypes = {
   count: PropTypes.number.isRequired,
-  onChangePage: PropTypes.func.isRequired,
+  onPageChange: PropTypes.func.isRequired,
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
 };
@@ -281,8 +281,8 @@ const ManageProductPage = () => {
                       inputProps: { "aria-label": "rows per page" },
                       native: true,
                     }}
-                    onChangePage={handleChangePage}
-                    onChangeRowsPerPage={handleChangeRowsPerPage}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
                     ActionsComponent={TablePaginationActions}
                   />
                 </TableRow>
