@@ -15,6 +15,7 @@ const PaymentDiv = styled.div({
   right: 0,
   background: "#fff",
   width: "100%",
+  boxShadow: "0 5px 10px rgba(0,0,0,.5)",
 });
 const Container = styled.div`
   height: 100%;
@@ -43,7 +44,7 @@ const CartPage = () => {
   const dispatch = useDispatch();
   const [listCart, setListCart] = useState([]);
   const [purchasedArr, setPurchasedArr] = useState([]);
-  const matches = useMediaQuery("(min-width:600px)");
+  const matches = useMediaQuery("(min-width:700px)");
   const data = useSelector((state) => state.cartReducer.data);
   const loading = useSelector((state) => state.cartReducer.loading);
   useEffect(() => {
@@ -113,7 +114,7 @@ const CartPage = () => {
             />
           )}
 
-          <PaymentDiv className="drop-shadow-md p-5 flex items-center">
+          <PaymentDiv className="drop-shadow-md p-5 flex items-center ">
             <span className="text-2xl border-r-2 border-slate-400 inline-block w-80 mr-5">
               Tổng thành tiền: {calcTotalMoney()}$
             </span>

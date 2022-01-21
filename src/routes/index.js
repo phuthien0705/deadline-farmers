@@ -27,7 +27,7 @@ const routesHome = [
 
   {
     exact: false,
-    path: "/add-product",
+    path: "/manage-product",
     component: AddProductPage,
   },
 ];

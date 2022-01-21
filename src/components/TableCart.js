@@ -37,10 +37,10 @@ const TableCart = ({
           </button>
         </td>
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap truncate text-center md:text-md">
-          {item.price}$
+          {item.price} $
         </td>
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap truncate text-center md:text-md">
-          {item.quantity * item.price}$
+          {item.quantity * item.price} $
         </td>
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap truncate text-center md:text-md">
           <input
@@ -53,7 +53,7 @@ const TableCart = ({
     ));
   };
   return (
-    <table className="w-10/12 mt-3 m-auto drop-shadow-2xl border">
+    <table className="w-10/12 mt-3 m-auto drop-shadow-2xl mb-20">
       <thead className="bg-gray-50 border-b-4 border-gray-300">
         <tr>
           <th className="w-20 p-3 text-sm md:text-lg font-semibold tracking-wide text-center">
