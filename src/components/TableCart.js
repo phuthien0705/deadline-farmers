@@ -53,7 +53,7 @@ const TableCart = ({
     ));
   };
   return (
-    <table className="w-full">
+    <table className="w-10/12 mt-3 m-auto drop-shadow-2xl border">
       <thead className="bg-gray-50 border-b-4 border-gray-300">
         <tr>
           <th className="w-20 p-3 text-sm md:text-lg font-semibold tracking-wide text-center">
