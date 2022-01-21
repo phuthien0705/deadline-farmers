@@ -17,7 +17,7 @@ const TableCartMobile = ({
       >
         <div className="flex  border-b-2 mb-2 pb-1">
           <div className="w-4/12">
-            <span className="pr-1">{matches ? "Chọn mua: " : "Mua: "}</span>
+            <span className="pr-2">Choose</span>
             <input
               type="checkbox"
               className="mr-3"
@@ -34,8 +34,8 @@ const TableCartMobile = ({
             <div className="flex">
               <img src={item.image} width={50} alt={item.name} />
               <div className="ml-3">
-                <p>Đơn giá: {item.price} $</p>
-                <p>Thành tiền: {item.price * item.quantity} $</p>
+                <p>Unit price: {item.price} $</p>
+                <p>Total: {item.price * item.quantity} $</p>
               </div>
             </div>
             <div className="border h-full rounded-md flex items-center justify-center">
@@ -62,8 +62,8 @@ const TableCartMobile = ({
               <img src={item.image} width="100%" alt={item.name} />
             </div>
             <div className="flex flex-col w-8/12">
-              <p>Đơn giá: {item.price} $</p>
-              <p>Thành tiền: {item.price * item.quantity} $</p>
+              <p>Unit price: {item.price} $</p>
+              <p>Total: {item.price * item.quantity} $</p>
               <div className="border-2 h-full rounded-md flex items-center justify-center w-8/12">
                 <button
                   className="text-black font-bold py-1 px-4 rounded text-md "
