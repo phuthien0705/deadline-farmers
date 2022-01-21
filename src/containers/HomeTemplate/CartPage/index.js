@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Button from "@mui/material/Button";
 import TableCart from "../../../components/TableCart";
 import TableCartMobile from "../../../components/TableCartMobile";
 import { useSelector, useDispatch } from "react-redux";
@@ -91,7 +90,6 @@ const CartPage = () => {
     });
     return totalMoney;
   };
-
   return (
     <Container>
       {loading ? (
@@ -114,11 +112,16 @@ const CartPage = () => {
             />
           )}
 
-          <PaymentDiv className="drop-shadow-md p-5 flex items-center ">
-            <span className="text-2xl border-r-2 border-slate-400 inline-block w-80 mr-5">
-              Tổng thành tiền: {calcTotalMoney()}$
+          <PaymentDiv className="drop-shadow-md p-5 flex items-center text-2xl ">
+            <span className=" border-r-2 border-slate-400 inline-block w-80 mr-5">
+              Total money: {calcTotalMoney()}$
             </span>
-            <Button variant="contained">Thanh toán</Button>
+            <button
+              class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+            >
+              BUY
+            </button>
           </PaymentDiv>
         </>
       )}
