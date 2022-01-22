@@ -25,8 +25,8 @@ function Register() {
             alert(err.response.data.msg)
         }
     }
-    return (<div></div>)
-    /*  <div className="login-page">
+    return (
+      <div className="login-page">
             <form onSubmit={registerSubmit}>
                 <h2>Register</h2>
                 <input type="text" name="name" required
@@ -40,9 +40,9 @@ function Register() {
 
                 <div className="row">
                     <button type="submit">Register</button>
-                    <Link to="/login">Login</Link>
+                    <a src="./login">Login</a>
                 </div>
             </form>
-        </div>*/
+        </div>)
 }
 export default Register

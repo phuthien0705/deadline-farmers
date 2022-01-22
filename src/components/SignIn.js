@@ -24,8 +24,8 @@ function Login() {
             alert(err.response.data.msg)
         }
     }
-    return (<div></div>)
-    /*<div className="login-page">
+    return (
+    <div className="login-page">
             <form onSubmit={loginSubmit}>
                 <h2>Login</h2>
                 <input type="email" name="email" required
@@ -36,9 +36,10 @@ function Login() {
 
                 <div className="row">
                     <button type="submit">Login</button>
-                    <Link to="/register">Register</Link>
+                    <a src="/register">Register</a>
                 </div>
             </form>
-        </div>*/
+        </div>
+    )
   }
   export default Login
