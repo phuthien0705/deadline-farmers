@@ -193,6 +193,8 @@ const Modal = ({ open, productEdit, closeModal }) => {
               onBlur={handleError}
               error={error.description !== ""}
               helperText={error.description}
+              multiline
+              rows={4}
             />
             <TextField
               size="small"
@@ -249,29 +251,31 @@ const Modal = ({ open, productEdit, closeModal }) => {
               id="contained-button-file"
               multiple
               type="file"
-              name="iamge"
+              name="image"
               onChange={handleChange}
             />
 
-            {productEdit ? (
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                disabled={!validation}
-              >
-                Save changes
-              </Button>
-            ) : (
-              <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                disabled={!validation}
-              >
-                Add product
-              </Button>
-            )}
+            <div className="mt-2">
+              {productEdit ? (
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  disabled={!validation}
+                >
+                  Save changes
+                </Button>
+              ) : (
+                <Button
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  disabled={!validation}
+                >
+                  Add product
+                </Button>
+              )}
+            </div>
           </form>
         </DialogContent>
       </Dialog>

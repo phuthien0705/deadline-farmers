@@ -113,15 +113,22 @@ const CartPage = () => {
           )}
 
           <PaymentDiv className="drop-shadow-md p-5 flex items-center text-2xl ">
-            <span className=" border-r-2 border-slate-400 inline-block w-80 mr-5">
+            <span className="inline-block w-80">
               Total money: {calcTotalMoney()}$
             </span>
-            <button
-              class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
-              type="button"
+            <div
+              style={{
+                borderLeft: "1px solid rgba(0,0,0,0.2)",
+                paddingLeft: "10px",
+              }}
             >
-              BUY
-            </button>
+              <button
+                className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
+                type="button"
+              >
+                BUY
+              </button>
+            </div>
           </PaymentDiv>
         </>
       )}

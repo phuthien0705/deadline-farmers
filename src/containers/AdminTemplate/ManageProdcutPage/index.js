@@ -215,19 +215,19 @@ const ManageProductPage = () => {
                     <StyledTableCellBody component="th" scope="row">
                       {row.name}
                     </StyledTableCellBody>
-                    <StyledTableCellBody align="right">
+                    <StyledTableCellBody align="center">
                       {row.description}
                     </StyledTableCellBody>
-                    <StyledTableCellBody align="right">
+                    <StyledTableCellBody align="center">
                       {row.categories}
                     </StyledTableCellBody>
-                    <StyledTableCellBody align="right">
+                    <StyledTableCellBody align="center">
                       {row.price}
                     </StyledTableCellBody>
-                    <StyledTableCellBody align="right">
+                    <StyledTableCellBody align="center">
                       {row.rating}
                     </StyledTableCellBody>
-                    <StyledTableCellBody align="right">
+                    <StyledTableCellBody align="center">
                       <img
                         className={classes.img}
                         src={row.image}
@@ -235,7 +235,7 @@ const ManageProductPage = () => {
                       />
                     </StyledTableCellBody>
                     <StyledTableCellBody
-                      align="right"
+                      align="center"
                       className={classes.action}
                     >
                       <Fab

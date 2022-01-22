@@ -8,6 +8,7 @@ import PageNotFound from "./containers/PageNotFound";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useEffect } from "react";
 import WebFont from "webfontloader";
+
 function App() {
   useEffect(() => {
     WebFont.load({
