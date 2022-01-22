@@ -6,8 +6,9 @@ import "./style/Login.css";
 import loginImage from "./src/Startup life-pana.png";
 import RegisterPage from "../RegisterPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const LoginPage = () => {
+const LoginPage = (props) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -20,14 +21,31 @@ const LoginPage = () => {
 
   const loginSubmit = async (e) => {
     e.preventDefault();
+    console.log(user);
     try {
-      const res = await axios.post("/user/login", { ...user });
-      console.log(res);
-      localStorage.setItem("firstLogin", true);
+      const res = await axios({
+        method: "POST",
+        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
+        data: { taiKhoan: user.email, matKhau: user.password },
+      });
 
-      window.location.href = "/";
+      console.log(res.data);
+      localStorage.setItem("UserInfo", JSON.stringify(res.data));
+      Swal.fire({
+        width: "400",
+        height: "100",
+        backdrop: "none",
+        showCloseButton: true,
+        icon: "success",
+        title: "Đăng nhập thành công",
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true,
+      });
+      props.history.replace("/");
     } catch (err) {
-      alert(err.response.data.msg);
+      console.log(err);
+      alert(err);
     }
   };
   return (
@@ -50,12 +68,13 @@ const LoginPage = () => {
                 Email
               </label>
               <input
-                type="email"
+                type="text"
                 id="email"
+                name="email"
                 className="login__input"
                 required
                 placeholder="Email"
-                defaultValue={user.email}
+                value={user.email}
                 onChange={onChangeInput}
               />
             </div>
@@ -69,10 +88,11 @@ const LoginPage = () => {
               <input
                 type="password"
                 id="password"
+                name="password"
                 className="login__input"
                 required
                 placeholder="Password"
-                defaultValue={user.password}
+                value={user.password}
                 onChange={onChangeInput}
               />
             </div>
