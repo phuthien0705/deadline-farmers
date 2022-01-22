@@ -1,20 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
 
-function ProductInfo(props) {
-
-    const [Product, setProduct] = useState({})
-
-    useEffect(() => {
-
-        setProduct(props.detail)
-
-    }, [props.detail])
-
-    const addToCarthandler = () => {
-        props.addToCart(props.detail._id)
-    }
-
+const ProductInfo = ({
+  names,
+  prices,
+  decripston,
+  addToCarthandler
+}) => {
 
     return (
       <div class="">
@@ -22,19 +14,19 @@ function ProductInfo(props) {
         <dl>
           
           <div class="bg-blue-200 px-2 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 ">
-            <dd class="text-xl   font-bold text-gray-500 ">
+            <dd class="text-xl  font-bold text-gray-500 ">
               Name Items
             </dd>
             <dd class="mt-1 text-base  text-gray-900 sm:mt-0 sm:col-span-2 ">
-              {props.name}
+              {names}
             </dd>
           </div>
           <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dd class="text-xl   font-bold text-gray-500">
-              Price
+              Price 
             </dd>
             <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {props.prices}
+            {prices}
             </dd>
           </div>
           <div class="bg-blue-200 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -42,17 +34,17 @@ function ProductInfo(props) {
               About
             </dd>
             <dd class="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-            {props.decripston}  
+            {decripston}  
             </dd>
           </div>
         </dl>
       </div>
-      <div class="flex justify-center">
+      <div class="ml-30">
 
-      <button onClick={addToCarthandler} class =" border-2 bg-blue-300 mt-9 font-semibold "> click me </button>
+      <button onClick={addToCarthandler} class ="w-8 h-8 border-solid outline-none mr-1 cursor-pointer"> Add cart </button>
       </div>
       </div>
     )
-}
+};
 
 export default ProductInfo
