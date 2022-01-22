@@ -15,7 +15,10 @@ const TableCartMobile = ({
         key={index}
         className="border rounded-xl w-10/12 p-3 my-2 bg-white drop-shadow-xl"
       >
-        <div className="flex  border-b-2 mb-2 pb-1">
+        <div
+          className="flex mb-4 pb-4"
+          style={{ borderBottom: "1px solid rgba(0,0,0,0.2)" }}
+        >
           <div className="w-4/12">
             <span className="pr-2">Choose</span>
             <input
