@@ -8,8 +8,36 @@ import PageNotFound from "./containers/PageNotFound";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useEffect } from "react";
 import WebFont from "webfontloader";
+import axios from "axios";
 
 function App() {
+  useEffect(() => {
+    console.log("Mounted");
+    const timerId = setInterval(() => {
+      const token = JSON.parse(localStorage.getItem("token"));
+      if (token)
+        axios({
+          method: "POST",
+          url: "http://68.183.224.29:5000/api/v1/auth/token",
+          body: { refreshToken: token.refreshToken },
+        })
+          .then((res) => {
+            console.log(res.data);
+            localStorage.setItem("token", JSON.stringify(res.data.tokens));
+            console.log("update token success");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      console.log("interval runing");
+    }, 10800000);
+    return () => {
+      clearInterval(timerId);
+      alert("clear interval");
+      console.log("clean interval");
+    };
+  }, []);
+
   useEffect(() => {
     WebFont.load({
       google: {

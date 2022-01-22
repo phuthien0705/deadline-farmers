@@ -211,7 +211,14 @@ const Modal = ({ open, productEdit, closeModal }) => {
               onBlur={handleError}
               error={error.categories !== ""}
               helperText={error.categories}
-            />
+              select
+            >
+              <MenuItem value="literature">Literature</MenuItem>
+              <MenuItem value="economic">Economic</MenuItem>
+              <MenuItem value="children">Children</MenuItem>
+              <MenuItem value="life-skill">LifeSkill</MenuItem>
+              <MenuItem value="foreign-language">Foreign Language</MenuItem>
+            </TextField>
             <TextField
               size="small"
               InputLabelProps={{ shrink: true }}

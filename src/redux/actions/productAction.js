@@ -15,8 +15,8 @@ export const actFetchListProduct = () => {
       method: "GET",
     })
       .then((res) => {
-        console.log(res.data);
-        dispatch(actGetListProductSucceess(res.data));
+        console.log(res.data.products);
+        dispatch(actGetListProductSucceess(res.data.products));
       })
       .catch((error) => {
         console.log(error);
@@ -36,34 +36,34 @@ const actGetListProductFailed = (error) => {
 };
 //----------------------------------------------------------------
 export const actDeleteProduct = (product) => {
-  const UserInfo = JSON.parse(localStorage.getItem("UserInfo"));
+  const token = JSON.parse(localStorage.getItem("token"));
   return axios({
     method: "DELETE",
-    url: URL_DELETE_PRODUCT(product.id),
+    url: URL_DELETE_PRODUCT(product._id),
     header: {
-      Authorization: `Bearer ${UserInfo.accessToken}`,
+      Authorization: `Bearer ${token.accessToken}`,
     },
   });
 };
 export const actAddProduct = (product) => {
-  const UserInfo = JSON.parse(localStorage.getItem("UserInfo"));
+  const token = JSON.parse(localStorage.getItem("token"));
   return axios({
     method: "POST",
     url: URL_ADD_PRODUCT,
     data: product,
     header: {
-      Authorization: `Bearer ${UserInfo.accessToken}`,
+      Authorization: `Bearer ${token.accessToken}`,
     },
   });
 };
 export const actUpdateProduct = (product) => {
-  const UserInfo = JSON.parse(localStorage.getItem("UserInfo"));
+  const token = JSON.parse(localStorage.getItem("token"));
   return axios({
-    method: "POST",
-    url: URL_UPDATE_PRODUCT,
+    method: "PUT",
+    url: URL_UPDATE_PRODUCT(product._id),
     data: product,
     header: {
-      Authorization: `Bearer ${UserInfo.accessToken}`,
+      Authorization: `Bearer ${token.accessToken}`,
     },
   });
 };

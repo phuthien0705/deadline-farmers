@@ -21,16 +21,16 @@ const LoginPage = (props) => {
 
   const loginSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
+    console.log({ ...user });
     try {
       const res = await axios({
         method: "POST",
-        url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap",
-        data: { taiKhoan: user.email, matKhau: user.password },
+        url: "http://68.183.224.29:5000/api/v1/auth/sign-in",
+        data: { ...user },
       });
 
       console.log(res.data);
-      localStorage.setItem("UserInfo", JSON.stringify(res.data));
+      localStorage.setItem("token", JSON.stringify(res.data.token));
       Swal.fire({
         width: "400",
         height: "100",
@@ -68,7 +68,7 @@ const LoginPage = (props) => {
                 Email
               </label>
               <input
-                type="text"
+                type="email"
                 id="email"
                 name="email"
                 className="login__input"
