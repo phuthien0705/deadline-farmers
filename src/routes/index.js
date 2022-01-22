@@ -1,8 +1,8 @@
+import ManageProductPage from "../containers/AdminTemplate/ManageProdcutPage";
 import CartPage from "../containers/HomeTemplate/CartPage";
 import DetailPage from "../containers/HomeTemplate/DetailPage";
 import HomePage from "../containers/HomeTemplate/HomePage";
 import PurchasedPage from "../containers/HomeTemplate/PurchasedPage";
-import AddProductPage from "../containers/HomeTemplate/AddProductPage";
 const routesHome = [
   {
     exact: true,
@@ -24,12 +24,13 @@ const routesHome = [
     path: "/purchased",
     component: PurchasedPage,
   },
-
+];
+const routesAdmin = [
   {
     exact: false,
-    path: "/add-product",
-    component: AddProductPage,
+    path: "/manage-product",
+    component: ManageProductPage,
   },
 ];
 
-export default routesHome;
+export { routesHome, routesAdmin };

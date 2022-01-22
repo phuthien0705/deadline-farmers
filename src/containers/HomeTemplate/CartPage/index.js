@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Button from "@mui/material/Button";
 import TableCart from "../../../components/TableCart";
 import TableCartMobile from "../../../components/TableCartMobile";
 import { useSelector, useDispatch } from "react-redux";
 import { actFetchListCartItem } from "../../../redux/actions/cartAction";
 import Loader from "../../../components/Loader";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 const PaymentDiv = styled.div({
   position: "fixed",
   bottom: 0,
@@ -13,6 +14,7 @@ const PaymentDiv = styled.div({
   right: 0,
   background: "#fff",
   width: "100%",
+  boxShadow: "0 5px 10px rgba(0,0,0,.5)",
 });
 const Container = styled.div`
   height: 100%;
@@ -36,10 +38,12 @@ const Container = styled.div`
     }
   }
 `;
+
 const CartPage = () => {
   const dispatch = useDispatch();
   const [listCart, setListCart] = useState([]);
   const [purchasedArr, setPurchasedArr] = useState([]);
+  const matches = useMediaQuery("(min-width:700px)");
   const data = useSelector((state) => state.cartReducer.data);
   const loading = useSelector((state) => state.cartReducer.loading);
   useEffect(() => {
@@ -86,34 +90,38 @@ const CartPage = () => {
     });
     return totalMoney;
   };
-
   return (
     <Container>
       {loading ? (
         <Loader />
       ) : (
         <>
-          <div className="cart w-full">
+          {matches ? (
             <TableCart
               listCart={listCart}
               handleUpdateQuantity={handleUpdateQuantity}
               handleCheck={handleCheck}
               purchasedArr={purchasedArr}
             />
-          </div>
-          <div className="cartMobile w-full">
+          ) : (
             <TableCartMobile
               listCart={listCart}
               handleUpdateQuantity={handleUpdateQuantity}
               handleCheck={handleCheck}
               purchasedArr={purchasedArr}
             />
-          </div>
-          <PaymentDiv className="drop-shadow-md p-5 flex items-center">
-            <span className="text-2xl border-r-2 border-slate-400 inline-block w-80 mr-5">
-              Tổng thành tiền: {calcTotalMoney()}$
+          )}
+
+          <PaymentDiv className="drop-shadow-md p-5 flex items-center text-2xl ">
+            <span className=" border-r-2 border-slate-400 inline-block w-80 mr-5">
+              Total money: {calcTotalMoney()}$
             </span>
-            <Button variant="contained">Thanh toán</Button>
+            <button
+              class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+            >
+              BUY
+            </button>
           </PaymentDiv>
         </>
       )}
