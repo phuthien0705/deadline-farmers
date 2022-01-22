@@ -117,7 +117,7 @@ const CartPage = () => {
               Total money: {calcTotalMoney()}$
             </span>
             <button
-              class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
+              className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
               type="button"
             >
               BUY

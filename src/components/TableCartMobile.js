@@ -25,7 +25,7 @@ const TableCartMobile = ({
               checked={purchasedArr.includes(item.id)}
             />
           </div>
-          <div className="w-8/12">
+          <div className="w-8/12 font-bold">
             <p>{item.name}</p>
           </div>
         </div>
@@ -89,7 +89,7 @@ const TableCartMobile = ({
   };
   return (
     <div className="w-full flex flex-col items-center mb-20">
-      <h1>MOBILE</h1>
+      <h1 className="text-xl font-bold">List of products</h1>
       {renderTable()}
     </div>
   );
