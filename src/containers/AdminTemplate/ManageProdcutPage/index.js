@@ -25,6 +25,7 @@ import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 import Modal from "../../../components/Modal";
+import { actDeleteProduct } from "../../../redux/actions/productAction";
 const LightTooltip = withStyles((theme) => ({
   tooltip: {
     backgroundColor: theme.palette.common.green,
@@ -146,7 +147,22 @@ const ManageProductPage = () => {
     setOpen(info);
   };
   //--------------------------------------------------------------------------
-  const handleDeleteProduct = (product) => {};
+  const handleDeleteProduct = (product) => {
+    actDeleteProduct(product)
+      .then((res) => {
+        Swal.fire(
+          "Delete product successfully",
+          "Press ok to exit!",
+          "success"
+        );
+        dispatch(actFetchListProduct());
+      })
+      .catch((error) => {
+        if (error.response.data)
+          Swal.fire("Delete failed product !", error.response.data, "error");
+        else Swal.fire("Delete failed product !", "", "error");
+      });
+  };
   const renderTable = () => {
     if (loading) return <CircularProgress className={classes.loading} />;
     if (listProduct === []) return "";
