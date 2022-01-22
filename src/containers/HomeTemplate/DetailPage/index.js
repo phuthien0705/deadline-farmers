@@ -23,7 +23,7 @@ function DetailProduct() {
     if(detailProduct.length === 0) return null;
 
     return (
-        <>
+        <div>
             <div className="detail">
                 <img src={detailProduct.images.url} alt="" />
                 <div className="box-detail">
@@ -53,7 +53,7 @@ function DetailProduct() {
                     }
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
