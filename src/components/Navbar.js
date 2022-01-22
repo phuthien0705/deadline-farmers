@@ -16,7 +16,7 @@ const Navbar = () => {
     const token = JSON.parse(localStorage.getItem("token"));
     axios({
       method: "GET",
-      url: "http://157.245.154.199:5000/api/v1/auth/logout",
+      url: "http://68.183.224.29:5000/api/v1/auth/logout",
       headers: {
         Authorization: `Bearer ${token.accessToken}`,
       },
