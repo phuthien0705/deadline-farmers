@@ -25,11 +25,11 @@ const LoginPage = (props) => {
     try {
       const res = await axios({
         method: "POST",
-        url: "http://157.245.154.199:5000/api/v1/auth/sign-in",
+        url: "http://68.183.224.29:5000/api/v1/auth/sign-in",
         data: { ...user },
       });
 
-      console.log(res.data.token);
+      console.log(res.data);
       localStorage.setItem("token", JSON.stringify(res.data.token));
       Swal.fire({
         width: "400",
