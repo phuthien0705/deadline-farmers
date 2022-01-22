@@ -1,9 +1,10 @@
+import LoginPage from "./containers/LoginPage";
+import RegisterPage from "./containers/RegisterPage";
 import "./App.css";
 import { routesHome, routesAdmin } from "./routes";
 import HomeTemplate from "./containers/HomeTemplate";
 import AdminTemplate from "./containers/AdminTemplate";
 import PageNotFound from "./containers/PageNotFound";
-import LoginPage from "./containers/LoginPage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useEffect } from "react";
 import WebFont from "webfontloader";
@@ -50,6 +51,7 @@ function App() {
         {renderRoutesHome(routesHome)}
         {renderRoutesAdmin(routesAdmin)}
         <Route path="/login" component={LoginPage}></Route>
+        <Route path="/register" component={RegisterPage}></Route>
         <Route path="" component={PageNotFound}></Route>
       </Switch>
     </BrowserRouter>

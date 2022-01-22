@@ -1,0 +1,129 @@
+html {
+  font-family: "Poppins", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+select,
+textarea,
+input,
+button {
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  resize: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.login {
+  width: 95%;
+  margin: 2rem auto;
+  background-color: white;
+  border-radius: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+.login__left, .login__right {
+  width: calc(50% - 2rem);
+}
+.login__right {
+  display: flex;
+  align-items: center;
+  padding-right: 1rem;
+}
+.login__image {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+.login__left {
+  padding: 3rem 3.5rem;
+}
+.login__title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #263238;
+  margin-bottom: 2rem;
+}
+.login__desc {
+  font-size: 1rem;
+  font-weight: 600;
+  position: relative;
+  padding-left: 8rem;
+  color: #f6725d;
+  margin-bottom: 3rem;
+}
+.login__desc:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 7rem;
+  height: 2px;
+  border-radius: 3px;
+  background-color: #f6725d;
+}
+.login__information {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.login__email, .login__password {
+  width: 100%;
+}
+.login__input {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 2px solid #eee;
+  border-radius: 1rem;
+  background-color: #f5f5f5;
+  transition: all 0.2s linear;
+}
+.login__input:focus {
+  border-color: #f6725d;
+}
+.login__input--name {
+  margin-bottom: 0;
+}
+.login__input--name:focus + .login-name__icon {
+  background-color: #f6725d;
+  color: white;
+}
+.login__label {
+  display: block;
+  font-size: 1rem;
+  color: #263238;
+  cursor: pointer;
+}
+.login__label--input {
+  margin-bottom: 0.8rem;
+}
+.login__button {
+  padding: 1rem 3rem;
+  font-size: 2rem;
+  margin: 0.5rem auto 1rem;
+  display: block;
+  background-color: #f6725d;
+  color: white;
+  border: 0;
+  border-radius: 10rem;
+  box-shadow: 0 5px 5px 0px rgba(246, 114, 93, 0.6);
+  cursor: pointer;
+  position: relative;
+}
+.login__redirect {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.login__redirect a {
+  color: #f6725d;
+}
+
+/*# sourceMappingURL=Login.css.map */
