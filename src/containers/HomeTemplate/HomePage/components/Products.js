@@ -5,7 +5,11 @@ import queryString from "query-string";
 import PostList from "./PostList/index.jsx";
 import Pagination from "./Pagination/index.jsx";
 import Filter from "./Filter/index.jsx";
-function Products() {
+
+var defaultTotalRows = 0;
+
+function Products(searchProps) {
+  const { searchFilters } = searchProps;
   const [postList, setPostList] = useState([]);
   const [pagination, setPagination] = useState({
     page: 1,
@@ -15,30 +19,29 @@ function Products() {
     page: 1,
     sort: "",
   });
+
   useEffect(() => {
-    async function fetchPostList() {
+    async function fetchProductsList() {
       try {
         const totalResponse = await axios.get(
           "http://68.183.224.29:5000/api/v1/product"
         );
-        const totalRows = totalResponse.data.products.length;
-        setPagination({ ...pagination, totalRows });
+        defaultTotalRows = totalResponse.data.products.length;
+        setPagination({ ...pagination, totalRows: defaultTotalRows });
       } catch (error) {
         console.log("Failed to fetch product list: ", error.message);
       }
     }
-    fetchPostList();
+    fetchProductsList();
   }, []);
 
   useEffect(() => {
     async function fetchPostList() {
       try {
         const paramsString = queryString.stringify(filters);
-        console.log(paramsString);
         const requestUrl = `http://68.183.224.29:5000/api/v1/product/?${paramsString}`;
         const response = await axios.get(requestUrl);
         const responseJSON = response.data;
-        console.log(responseJSON);
 
         const { products } = responseJSON;
         setPostList(products);
@@ -50,8 +53,28 @@ function Products() {
     fetchPostList();
   }, [filters]);
 
+  useEffect(() => {
+    async function fetchSearchPostList() {
+      try {
+        const paramsString = queryString.stringify(searchFilters);
+        const requestUrl = `http://68.183.224.29:5000/api/v1/product/search?${paramsString}`;
+        const response = await axios.get(requestUrl);
+        const responseJSON = response.data;
+
+        const { res } = responseJSON;
+        const resLength = res ? res.length : 0;
+        setPostList(res);
+        setPagination({ page: 1, totalRows: resLength });
+      } catch (error) {
+        setPagination({ page: 1, totalRows: defaultTotalRows });
+        setFilters({...filters, page: 1});
+      }
+    }
+
+    fetchSearchPostList();
+  }, [searchFilters]);
+
   function handlePageChange(newPage) {
-    console.log("New page: ", newPage);
     setFilters({
       ...filters,
       page: newPage,
@@ -60,7 +83,6 @@ function Products() {
   }
 
   function handleSortChange(option) {
-    console.log("New page: ", option);
     setFilters({
       ...filters,
       page: 1,

@@ -12,10 +12,9 @@ PostList.defaultProps = {
 
 function PostList(props) {
     const {posts} = props;
-    console.log(posts)
     return (
         <div>
-            <ul className="post-list grid grid-cols-2 mt-5">
+            <ul className="post-list grid grid-cols-3 mt-5">
                 {posts.map(post => (
                     <li key={post._id} className="post">
                          <Link to={`/detail/${post._id}`}>

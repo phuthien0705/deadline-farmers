@@ -1,4 +1,4 @@
-import React from "react";  
+import React, { useState } from "react";  
 import './styles/Sidebar.css';
 import './styles/Searchbar.css';
 import PostFiltersForm from './components/PostFiltersForm/index.jsx';
@@ -8,16 +8,25 @@ import Products from "./components/Products";
 
 
 const HomePage = () => {
+  const [filters, setFilters] = useState({
+    name: "",
+    categories: "",
+  })
+
   function handleFiltersChange(newFilters) {
-    console.log('new filters', newFilters);
+    setFilters({...filters, name: newFilters.searchTerm});
   } 
+
+  function handleOnChoose(category) {
+    setFilters({...filters, category: category});
+  }
 
   return (
     <div className="container flex space-between m-auto">
-      <Sidebar></Sidebar>
+      <Sidebar onChoose={handleOnChoose}></Sidebar>
       <div className="products w-3/4">
         <PostFiltersForm onSubmit={handleFiltersChange}/>
-        <Products></Products>
+        <Products searchFilters={filters}></Products>
       </div>
     </div>
   )
