@@ -12,8 +12,7 @@ Pagination.defaultProps = {
 
 function Pagination(props) {
     const { pagination, onPageChange } = props;
-    const { _page, _limit, _totalRows } = pagination;
-    const totalPages = Math.ceil(_totalRows / _limit);
+    const { page, totalPages } = pagination;
 
     function handlePageChange(newPage) {
         if (onPageChange) {
@@ -26,15 +25,15 @@ function Pagination(props) {
             <div className='pagination flex items-center justify-center'>
                 <button
                     className='text-xl p-2 m-2'
-                    disabled={_page <= 1}
-                    onClick={() => handlePageChange(_page - 1)}
+                    disabled={page <= 1}
+                    onClick={() => handlePageChange(page - 1)}
                     >
                     Prev
                 </button>
                 <button
                     className='text-xl p-2 m-2'
-                    disabled={_page >= totalPages}
-                    onClick={() => handlePageChange(_page + 1)}
+                    disabled={page >= totalPages}
+                    onClick={() => handlePageChange(page + 1)}
                     >
                     Next
                 </button>

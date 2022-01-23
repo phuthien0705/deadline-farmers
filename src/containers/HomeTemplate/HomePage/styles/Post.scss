@@ -32,8 +32,10 @@ $secondary-color: #CA41FC;
         box-shadow: 0px 0px 20px -5px;
         transform: scale(1.01);
     }
-    &-author,
-    &-title {
+
+    &-title,
+    &-category,
+    &-price {
         margin: 1rem
     }
 }

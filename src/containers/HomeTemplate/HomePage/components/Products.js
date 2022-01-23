@@ -9,26 +9,26 @@ import Filter from './Filter/index.jsx'
 function Products() {
     const [postList, setPostList] = useState([]);
     const [pagination, setPagination] = useState({
-        _page: 1,
-        _limit: 12,
-        _totalRows: 1   
+        page: 1,
+        totalPages: 1   
     });
-    const [filters, setFilters] = useState({
-        _limit: 12, 
-        _page: 1
+    const [filters, setFilters] = useState({ 
+        page: 1
     })
 
     useEffect(() => {
         async function fetchPostList() {
             try {
-                const paramsString = queryString.stringify(filters);
-                const requestUrl = `https://js-post-api.herokuapp.com/api/posts?${paramsString}`;
+                const totalResponse = await axios.get('http://68.183.224.29:5000/api/v1/product');
+                const totalPages = totalResponse.data.length;
+                const page = filters.page;
+                const requestUrl = `http://68.183.224.29:5000/api/v1/product/?page=${page}`;
                 const response = await axios.get(requestUrl);
                 const responseJSON = response.data;
 
-                const { data, pagination } = responseJSON;
-                setPostList(data);
-                setPagination(pagination);
+                const { products } = responseJSON;
+                setPostList(products);
+                setPagination(...pagination, totalPages);
             } catch (error) {
                 console.log('Failed to fetch post list: ', error.message);
             }
@@ -40,8 +40,7 @@ function Products() {
     function handlePageChange(newPage) {
         console.log('New page: ', newPage);
         setFilters({
-            ...filters,
-            _page: newPage,
+            page: newPage,
         })
     }
 
