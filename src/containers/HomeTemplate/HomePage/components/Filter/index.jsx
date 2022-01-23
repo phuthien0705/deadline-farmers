@@ -9,6 +9,7 @@ Filter.propTypes = {
 };
 
 function Filter(props) {
+    const { onSortChange } = props;
     const [popUp, setPopUp] = useState('none');
 
     const handlePopUp = () => {
@@ -19,17 +20,22 @@ function Filter(props) {
         }
     }
 
+    const handleSort = (option) => {
+        if (onSortChange) {
+            onSortChange(option);
+        }
+    }
+
 
     return (
         <div className='filter flex justify-end mt-10'>
-            <div className="filter-logo">
-                <div onClick={() => handlePopUp()} className='logo-container'>
+            <div onClick={() => handlePopUp()} className="filter-logo">
+                <div className='logo-container'>
                     <img src={sort} />
                 </div>
                 <ul style={ { display: popUp } } className='filter-options'>
-                    <li onClick={() => handlePopUp()} id="ascending">Price - Low to High</li>
-                    <li onClick={() => handlePopUp()} id="descending">Price - High to Low</li>
-                    <li onClick={() => handlePopUp()} id="review">Avg.Customer Review</li>
+                    <li onClick={() => handleSort('asc')}>Price - Low to High</li>
+                    <li onClick={() => handleSort('desc')}>Price - High to Low</li>
                 </ul>
             </div>
             

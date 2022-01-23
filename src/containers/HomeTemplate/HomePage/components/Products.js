@@ -10,25 +10,39 @@ function Products() {
     const [postList, setPostList] = useState([]);
     const [pagination, setPagination] = useState({
         page: 1,
-        totalPages: 1   
+        totalRows: 1   
     });
     const [filters, setFilters] = useState({ 
-        page: 1
+        page: 1,
+        sort: "",
     })
 
     useEffect(() => {
         async function fetchPostList() {
             try {
                 const totalResponse = await axios.get('http://68.183.224.29:5000/api/v1/product');
-                const totalPages = totalResponse.data.length;
-                const page = filters.page;
-                const requestUrl = `http://68.183.224.29:5000/api/v1/product/?page=${page}`;
+                const totalRows = totalResponse.data.products.length;
+                setPagination({...pagination, totalRows});
+            } catch (error) {
+                console.log('Failed to fetch product list: ', error.message);
+            }
+        }
+
+        fetchPostList();
+    }, []);
+
+    useEffect(() => {
+        async function fetchPostList() {
+            try {
+                const paramsString = queryString.stringify(filters);
+                console.log(paramsString);
+                const requestUrl = `http://68.183.224.29:5000/api/v1/product/?${paramsString}`;
                 const response = await axios.get(requestUrl);
                 const responseJSON = response.data;
+                console.log(responseJSON);
 
                 const { products } = responseJSON;
                 setPostList(products);
-                setPagination(...pagination, totalPages);
             } catch (error) {
                 console.log('Failed to fetch post list: ', error.message);
             }
@@ -40,13 +54,25 @@ function Products() {
     function handlePageChange(newPage) {
         console.log('New page: ', newPage);
         setFilters({
+            ...filters,
             page: newPage,
         })
+        setPagination({...pagination, page: newPage})
+    }
+
+    function handleSortChange(option) {
+        console.log('New page: ', option);
+        setFilters({
+            ...filters,
+            page: 1,
+            sort: option
+        })
+        setPagination({...pagination, page: 1})
     }
 
     return (
         <div>
-            <Filter/>
+            <Filter onSortChange={handleSortChange}/>
             <PostList posts={postList} />
             <Pagination
                 pagination={pagination}
