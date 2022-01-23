@@ -1,4 +1,7 @@
 .post {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin: 10px;
   padding: 20px;
   box-shadow: 0px 0px 20px -10px;
@@ -10,9 +13,9 @@
 }
 .post-add {
   display: block;
-  width: 50%;
   height: 3rem;
-  margin: auto;
+  margin: 1rem auto 0;
+  padding: 1rem 2rem;
   border-radius: 50rem;
   font-size: 1rem;
   color: white;
@@ -30,8 +33,30 @@
   box-shadow: 0px 0px 20px -5px;
   transform: scale(1.01);
 }
+.post-image {
+  height: 15rem;
+  overflow: hidden;
+}
+.post-image img {
+  display: block;
+  margin: 0 auto;
+  height: 100%;
+  object-fit: cover;
+}
 .post-title, .post-category, .post-price {
   margin: 1rem;
+}
+.post-title {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.post-category {
+  font-size: 0.9rem;
+}
+.post-price {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .pagination button:disabled {

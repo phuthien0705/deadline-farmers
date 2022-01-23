@@ -18,10 +18,16 @@ function PostList(props) {
                 {posts.map(post => (
                     <li key={post._id} className="post">
                          <Link to={`/detail/${post._id}`}>
-                        <img src={post.image} alt="" />
-                        <h2 className='post-title'>Name: {post.name}</h2>
-                        <h4 className='post-category'>Category: {post.category}</h4>
-                        <h4 className='post-price'>Price: {post.price}</h4>
+                            <div className='post-container'>
+                                <div className="post-image">
+                                    <img src={post.image} alt="" />
+                                </div>
+                                <div className='post-info'>
+                                    <h2 className='post-title'>{post.name}</h2>
+                                    <h4 className='post-category'>{post.category}</h4>
+                                    <h4 className='post-price'>{post.price}$</h4>
+                                </div>
+                            </div>
                         </Link>
                         <button className='post-add'>Add to cart</button>
                     </li>
