@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import axios from "axios";
 import "./style/Reset.css";
 import "./style/Login.css";
@@ -7,8 +6,12 @@ import loginImage from "./src/Startup life-pana.png";
 import RegisterPage from "../RegisterPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { URL_GET_LIST_CART_ITEM, URL_SIGN_UP } from "../../redux/urlAPI";
+import { actGetListCartItemSuccess } from "./../../redux/actions/cartAction";
+import { useSelector, useDispatch } from "react-redux";
 
 const LoginPage = (props) => {
+  const dispatch = useDispatch();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -25,12 +28,23 @@ const LoginPage = (props) => {
     try {
       const res = await axios({
         method: "POST",
-        url: "http://68.183.224.29:5000/api/v1/auth/sign-in",
+        url: URL_SIGN_UP,
         data: { ...user },
       });
 
       console.log(res.data);
       localStorage.setItem("token", JSON.stringify(res.data.token));
+      console.log("login success");
+      const cart = await axios({
+        url: URL_GET_LIST_CART_ITEM,
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${res.data.token.accessToken}`,
+        },
+      });
+      if (!cart.data[0]) localStorage.setItem("listCart", JSON.stringify([]));
+      else
+        localStorage.setItem("listCart", JSON.stringify(cart.data[0].products));
       Swal.fire({
         width: "400",
         height: "100",

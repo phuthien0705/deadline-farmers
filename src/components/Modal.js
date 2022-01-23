@@ -119,7 +119,8 @@ const Modal = ({ open, productEdit, closeModal }) => {
       rating,
     };
     if (productEdit) {
-      data = { ...data, _id: productEdit._id };
+      data = { ...data, id: productEdit._id };
+      console.log("type of img", typeof data.image);
       let form_data = new FormData();
       for (const i in data) {
         console.log(i, data[i]);

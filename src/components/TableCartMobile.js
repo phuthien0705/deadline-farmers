@@ -24,8 +24,8 @@ const TableCartMobile = ({
             <input
               type="checkbox"
               className="mr-3"
-              onChange={() => handleCheck(item.id)}
-              checked={purchasedArr.includes(item.id)}
+              onChange={() => handleCheck(item._id)}
+              checked={purchasedArr.includes(item._id)}
             />
           </div>
           <div className="w-8/12 font-bold">

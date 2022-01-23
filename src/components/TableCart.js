@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const TableCart = ({
   listCart,
@@ -8,12 +9,12 @@ const TableCart = ({
 }) => {
   const renderTable = () => {
     return listCart.map((item) => (
-      <tr key={item.id} className="bg-white border-b-2">
+      <tr key={item._id} className="bg-white border-b-2">
         <td
           className="p-3 text-sm text-gray-700 whitespace-nowrap truncate md:text-md align-middle"
           style={{ maxWidth: "20rem" }}
         >
-          {item.name}
+          <Link to={`/detail/${item._id}`}> {item.name}</Link>
         </td>
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap truncate  md:text-md align-middle">
           <img
@@ -49,8 +50,8 @@ const TableCart = ({
         <td className="p-3 text-sm text-gray-700 whitespace-nowrap truncate text-center md:text-md align-middle">
           <input
             type="checkbox"
-            onChange={() => handleCheck(item.id)}
-            checked={purchasedArr.includes(item.id)}
+            onChange={() => handleCheck(item._id)}
+            checked={purchasedArr.includes(item._id)}
           />
         </td>
       </tr>
