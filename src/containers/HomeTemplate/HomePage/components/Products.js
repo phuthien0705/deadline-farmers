@@ -9,43 +9,42 @@ import Filter from "./Filter/index.jsx";
 function Products() {
   const [postList, setPostList] = useState([]);
   const [pagination, setPagination] = useState({
-    _page: 1,
-    _limit: 12,
-    _totalRows: 1,
+    page: 1,
+    totalPages: 1,
   });
   const [filters, setFilters] = useState({
-    _limit: 12,
-    _page: 1,
+    page: 1,
   });
 
   useEffect(() => {
     async function fetchPostList() {
       try {
-        //const paramsString = queryString.stringify(filters);
-        const requestUrl = `http://68.183.224.29:5000/api/v1/product`;
+        const totalResponse = await axios.get(
+          "http://68.183.224.29:5000/api/v1/product"
+        );
+        const totalPages = totalResponse.data.length;
+        const page = filters.page;
+        const requestUrl = `http://68.183.224.29:5000/api/v1/product/?page=${page}`;
         const response = await axios.get(requestUrl);
-        console.log(response.data.products);
-        const responseJSON = response.data.products;
-        const data = responseJSON.filter((item, index) => {
-          if (
-            index >= filters._page * 12 - 12 &&
-            index <= filters._page * 12 - 1
-          )
-            return item;
-        });
-        // const { data, pagination } = responseJSON;
-        setPostList(data);
-        setPagination({
-          ...pagination,
-          _page: filters._page,
-          _totalRows: responseJSON.length,
-        });
+        const responseJSON = response.data;
+
+        const { products } = responseJSON;
+        setPostList(products);
+        setPagination(...pagination, totalPages);
       } catch (error) {
         console.log("Failed to fetch post list: ", error.message);
       }
     }
+
     fetchPostList();
   }, [filters]);
+
+  function handlePageChange(newPage) {
+    console.log("New page: ", newPage);
+    setFilters({
+      page: newPage,
+    });
+  }
 
   function handlePageChange(newPage) {
     console.log("New page: ", newPage);
