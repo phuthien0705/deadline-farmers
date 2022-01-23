@@ -1,42 +1,45 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-
+import "./detailProduct.css"
 function DetailPage(props) {
-  const { id } = props.match.params;
-  const [detailProduct, setDetailProduct] = useState({});
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url: `http://68.183.224.29:5000/api/v1/product/${id}`,
-    })
-      .then((res) => {
-        console.log(res.data[0]);
-        setDetailProduct(res.data[0]);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  }, []);
+    const { id } = props.match.params;
+    const [detailProduct, setDetailProduct] = useState({});
+    useEffect(() => {
+        axios({
+            method: "GET",
+            url: `http://68.183.224.29:5000/api/v1/product/${id}`,
+        })
+            .then((res) => {
+                console.log(res.data[0]);
+                setDetailProduct(res.data[0]);
+            })
+            .catch((error) => {
+                console.log(error.message);
+            });
+    }, []);
 
-  return (
-    <div>
-      <div className="detail">
-        <img src={detailProduct.image} alt="" />
-        <div className="box-detail">
-          <div className="row">
-            <h2>{detailProduct.name}</h2>
-            <h6>#id: {detailProduct._id}</h6>
-          </div>
-          <span>$ {detailProduct.price}</span>
-          <p>{detailProduct.description}</p>
-          {/* <p>{detailProduct.content}</p> */}
-          {/* <p>Sold: {detailProduct.sold}</p> */}
+    return (
+        <div className="main">
+            <div className="container" class='grid grid-cols-2'>
+                <div className="left-column" >
+                    <img src={detailProduct.image} alt="" />
+                </div>
+                <div class="right-column">
+                    <div class="product-description">
+                        <div class="product-description">
+                            <span>{detailProduct.name}</span>
+                            <p>{detailProduct.description}</p>
+                        </div>
+
+                        <div class="product-price">
+                            <span>{detailProduct.price}$</span>
+                            <a href="#" class="cart-btn" /*them cai ham add carrt vao nha*/>Add to cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <button className="border rounded ">Add to cart</button>
-    </div>
-  );
+    );
 }
 
 export default DetailPage;
