@@ -92,8 +92,9 @@ const Navbar = (props) => {
               <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
                 <li>
                   <a
-                    className="inline-block no-underline hover:text-black hover:underline py-2 px-4"
+                    className="inline-block no-underline hover:text-black hover:underline py-2 px-4 font-bold text-gray-800 text-xl pl-5"
                     href="/"
+                    style={{ textDecoration: "none" }}
                   >
                     Home
                   </a>
@@ -166,6 +167,13 @@ const Navbar = (props) => {
                       Manage Product
                     </MenuItem>
                   )}
+                  <MenuItem
+                    onClick={() => {
+                      history.push("/purchased");
+                    }}
+                  >
+                    Purchased
+                  </MenuItem>
                   <MenuItem
                     onClick={() => {
                       handleClose();

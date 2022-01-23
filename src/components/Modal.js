@@ -59,6 +59,7 @@ const DialogContent = withStyles((theme) => ({
 const Modal = ({ open, productEdit, closeModal }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const [avatar, setAvatar] = useState();
   const [input, setInput] = useState({
     name: "",
     description: "",
@@ -109,6 +110,11 @@ const Modal = ({ open, productEdit, closeModal }) => {
     });
   }, [open]);
 
+  useEffect(() => {
+    return () => {
+      avatar && URL.revokeObjectURL(avatar.preview);
+    };
+  }, [avatar]);
   const handleSubmit = (e) => {
     e.preventDefault();
     const price = Number(input.price);
@@ -166,6 +172,11 @@ const Modal = ({ open, productEdit, closeModal }) => {
   const handleChange = (e) => {
     const { value, name } = e.target;
     if (name === "image") {
+      const file = e.target.files[0];
+      file.preview = URL.createObjectURL(file);
+      setAvatar(file);
+    }
+    if (name === "image") {
       setInput({ ...input, image: e.target.files[0] }, console.log(input));
     } else
       setInput({
@@ -180,13 +191,16 @@ const Modal = ({ open, productEdit, closeModal }) => {
     mess = value === "" ? name + " cannot be blank" : "";
     switch (name) {
       case "price":
-        if (value && !value.match("^[0-9]+$")) {
+        if (value && !value.match("[+-]?[0-9]+(.[0-9]+)?([Ee][+-]?[0-9]+)?")) {
           mess = "Please enter only numbers";
         }
         break;
       case "rating":
-        if (value && !value.match("^[0-9]+$")) {
+        if (value && !value.match("[+-]?[0-9]+(.[0-9]+)?([Ee][+-]?[0-9]+)?")) {
           mess = "Please enter only numbers";
+        }
+        if (value && (Number(value) > 5 || Number(value) < 0)) {
+          mess = "The value of rating must be between 0 and 5";
         }
         break;
 
@@ -276,7 +290,7 @@ const Modal = ({ open, productEdit, closeModal }) => {
               <MenuItem value="literature">Literature</MenuItem>
               <MenuItem value="economic">Economic</MenuItem>
               <MenuItem value="children">Children</MenuItem>
-              <MenuItem value="life-skill">LifeSkill</MenuItem>
+              <MenuItem value="life-skill">Life Skill</MenuItem>
               <MenuItem value="foreign-language">Foreign Language</MenuItem>
             </TextField>
             <TextField
@@ -303,6 +317,7 @@ const Modal = ({ open, productEdit, closeModal }) => {
               name="image"
               onChange={handleChange}
             />
+            {avatar && <img src={avatar.preview} alt="" width={80} />}
             <TextField
               size="small"
               InputLabelProps={{ shrink: true }}
