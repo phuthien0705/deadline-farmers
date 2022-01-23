@@ -62,8 +62,11 @@ const Navbar = (props) => {
         timerProgressBar: true,
       });
   };
-  const token = JSON.parse(localStorage.getItem("token")).accessToken;
-  const decodeToken = jwt(token);
+  let token = JSON.parse(localStorage.getItem("token"));
+  let decodeToken;
+  if (token) token = token.accessToken;
+  if (token) decodeToken = jwt(token);
+  else decodeToken = { role: false };
   return (
     <div>
       <nav id="header" className="w-full z-30 top-0 py-1">

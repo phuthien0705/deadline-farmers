@@ -148,11 +148,8 @@ const Modal = ({ open, productEdit, closeModal }) => {
     } else {
       let form_data = new FormData();
       for (const i in data) {
-        console.log(i, data[i]);
         form_data.append(i, data[i]);
       }
-
-      console.log(form_data);
       actAddProduct(form_data)
         .then((res) => {
           Swal.fire(
@@ -183,7 +180,6 @@ const Modal = ({ open, productEdit, closeModal }) => {
         ...input,
         [name]: value,
       });
-    console.log({ name, value });
   };
   const handleError = (e) => {
     const { name, value } = e.target;
