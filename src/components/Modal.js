@@ -12,6 +12,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Swal from "sweetalert2";
 import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch } from "react-redux";
+import {
+  actAddProduct,
+  actUpdateProduct,
+  actFetchListProduct,
+} from "../redux/actions/productAction";
 const useStyles = makeStyles({
   input: {
     margin: "10px 0",
@@ -57,7 +62,7 @@ const Modal = ({ open, productEdit, closeModal }) => {
   const [input, setInput] = useState({
     name: "",
     description: "",
-    categories: "",
+    category: "",
     price: "",
     rating: "",
     image: "",
@@ -65,7 +70,7 @@ const Modal = ({ open, productEdit, closeModal }) => {
   const [error, setError] = useState({
     name: "",
     description: "",
-    categories: "",
+    category: "",
     price: "",
     rating: "",
     image: "",
@@ -77,7 +82,7 @@ const Modal = ({ open, productEdit, closeModal }) => {
         ...input,
         name: productEdit.name,
         description: productEdit.description,
-        categories: productEdit.categories,
+        category: productEdit.category,
         price: productEdit.price,
         rating: productEdit.rating,
         image: productEdit.image,
@@ -87,7 +92,7 @@ const Modal = ({ open, productEdit, closeModal }) => {
       setInput({
         name: "",
         description: "",
-        categories: "",
+        category: "",
         price: "",
         rating: "",
         image: "",
@@ -97,7 +102,7 @@ const Modal = ({ open, productEdit, closeModal }) => {
     setError({
       name: "",
       description: "",
-      categories: "",
+      category: "",
       price: "",
       rating: "",
       image: "",
@@ -106,7 +111,55 @@ const Modal = ({ open, productEdit, closeModal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(input);
+    const price = Number(input.price);
+    const rating = Number(input.rating);
+    let data = {
+      ...input,
+      price,
+      rating,
+    };
+    if (productEdit) {
+      data = { ...data, _id: productEdit._id };
+      let form_data = new FormData();
+      for (const i in data) {
+        console.log(i, data[i]);
+        form_data.append(i, data[i]);
+      }
+      console.log(form_data);
+      actUpdateProduct(form_data, productEdit._id)
+        .then((res) => {
+          Swal.fire(
+            "Update product successfully",
+            "Press ok to exit!",
+            "success"
+          );
+          dispatch(actFetchListProduct());
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+      let form_data = new FormData();
+      for (const i in data) {
+        console.log(i, data[i]);
+        form_data.append(i, data[i]);
+      }
+
+      console.log(form_data);
+      actAddProduct(form_data)
+        .then((res) => {
+          Swal.fire(
+            "Create product successfully",
+            "Press ok to exit!",
+            "success"
+          );
+          dispatch(actFetchListProduct());
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+
     handleClose();
   };
   const handleChange = (e) => {
@@ -135,6 +188,7 @@ const Modal = ({ open, productEdit, closeModal }) => {
           mess = "Please enter only numbers";
         }
         break;
+
       default:
         break;
     }
@@ -142,8 +196,8 @@ const Modal = ({ open, productEdit, closeModal }) => {
       ...error,
       [name]: mess,
     });
-    const { description, categories, price, rating, image } = input;
-    if (input.name && description && categories && price && rating && image)
+    const { description, category, price, rating, image } = input;
+    if (input.name && description && category && price && rating && image)
       setValidation(true);
     else setValidation(false);
   };
@@ -161,7 +215,12 @@ const Modal = ({ open, productEdit, closeModal }) => {
           {productEdit ? "Edit product" : " Add product"}
         </DialogTitle>
         <DialogContent dividers>
-          <form onSubmit={handleSubmit} noValidate autoComplete="off">
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+            autoComplete="off"
+            encType="multipart/form-data"
+          >
             <TextField
               size="small"
               InputLabelProps={{ shrink: true }}
@@ -199,18 +258,18 @@ const Modal = ({ open, productEdit, closeModal }) => {
             <TextField
               size="small"
               InputLabelProps={{ shrink: true }}
-              value={input.categories}
+              value={input.category}
               fullWidth
               className={classes.input}
               id="outlined-multiline-static"
-              label="Categories"
+              label="Category"
               variant="outlined"
               onChange={handleChange}
-              name="categories"
+              name="category"
               onKeyUp={handleError}
               onBlur={handleError}
-              error={error.categories !== ""}
-              helperText={error.categories}
+              error={error.category !== ""}
+              helperText={error.category}
               select
             >
               <MenuItem value="literature">Literature</MenuItem>
@@ -235,6 +294,14 @@ const Modal = ({ open, productEdit, closeModal }) => {
               error={error.price !== ""}
               helperText={error.price}
             />
+            <input
+              accept="image/*"
+              className={classes.input}
+              id="contained-button-file"
+              type="file"
+              name="image"
+              onChange={handleChange}
+            />
             <TextField
               size="small"
               InputLabelProps={{ shrink: true }}
@@ -250,16 +317,6 @@ const Modal = ({ open, productEdit, closeModal }) => {
               onBlur={handleError}
               error={error.rating !== ""}
               helperText={error.rating}
-            />
-
-            <input
-              accept="image/*"
-              className={classes.input}
-              id="contained-button-file"
-              multiple
-              type="file"
-              name="image"
-              onChange={handleChange}
             />
 
             <div className="mt-2">
