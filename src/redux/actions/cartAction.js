@@ -4,13 +4,17 @@ import { URL_GET_LIST_CART_ITEM } from "../urlAPI";
 export const actFetchListCartItem = () => {
   return (dispatch) => {
     dispatch(actGetListCartItemRequest());
+    const token = JSON.parse(localStorage.getItem("token"));
     axios({
       url: URL_GET_LIST_CART_ITEM,
       method: "GET",
+      headers: {
+        Authorization: `Bearer ${token.accessToken}`,
+      },
     })
       .then((res) => {
-        console.log(res.data);
-        dispatch(actGetListCartItemSuccess(res.data));
+        console.log(res.data[0].products);
+        dispatch(actGetListCartItemSuccess(res.data[0].products));
       })
       .catch((error) => {
         console.log(error);

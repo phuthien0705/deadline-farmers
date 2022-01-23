@@ -212,7 +212,7 @@ const ManageProductPage = () => {
                 <TableRow>
                   <StyledTableCell align="center">Name</StyledTableCell>
                   <StyledTableCell align="center">Description</StyledTableCell>
-                  <StyledTableCell align="center">Categories</StyledTableCell>
+                  <StyledTableCell align="center">Category</StyledTableCell>
                   <StyledTableCell align="center">Price</StyledTableCell>
                   <StyledTableCell align="center">Rating</StyledTableCell>
                   <StyledTableCell align="center">Image</StyledTableCell>
@@ -235,7 +235,7 @@ const ManageProductPage = () => {
                       {row.description}
                     </StyledTableCellBody>
                     <StyledTableCellBody align="center">
-                      {row.categories}
+                      {row.category}
                     </StyledTableCellBody>
                     <StyledTableCellBody align="center">
                       {row.price}

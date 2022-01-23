@@ -40,7 +40,7 @@ export const actDeleteProduct = (product) => {
   return axios({
     method: "DELETE",
     url: URL_DELETE_PRODUCT(product._id),
-    header: {
+    headers: {
       Authorization: `Bearer ${token.accessToken}`,
     },
   });
@@ -51,19 +51,21 @@ export const actAddProduct = (product) => {
     method: "POST",
     url: URL_ADD_PRODUCT,
     data: product,
-    header: {
+    headers: {
       Authorization: `Bearer ${token.accessToken}`,
+      "Content-Type": "multipart/form-data",
     },
   });
 };
-export const actUpdateProduct = (product) => {
+export const actUpdateProduct = (product, id) => {
   const token = JSON.parse(localStorage.getItem("token"));
   return axios({
     method: "PUT",
-    url: URL_UPDATE_PRODUCT(product._id),
+    url: URL_UPDATE_PRODUCT(id),
     data: product,
-    header: {
+    headers: {
       Authorization: `Bearer ${token.accessToken}`,
+      "Content-Type": "multipart/form-data",
     },
   });
 };
