@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as ActionType from "../constants";
-import { URL_GET_LIST_CART_ITEM } from "../urlAPI";
+import { URL_GET_LIST_CART_ITEM, URL_ADD_ORDER } from "../urlAPI";
 export const actFetchListCartItem = () => {
   return (dispatch) => {
     dispatch(actGetListCartItemRequest());
@@ -13,8 +13,10 @@ export const actFetchListCartItem = () => {
       },
     })
       .then((res) => {
-        console.log(res.data[0].products);
-        dispatch(actGetListCartItemSuccess(res.data[0].products));
+        console.log(res.data[0]);
+        if (res.data[0])
+          dispatch(actGetListCartItemSuccess(res.data[0].products));
+        else dispatch(actGetListCartItemSuccess([]));
       })
       .catch((error) => {
         console.log(error);
@@ -26,7 +28,7 @@ export const actFetchListCartItem = () => {
 const actGetListCartItemRequest = () => {
   return { type: ActionType.GET_LIST_CART_ITEM_REQUEST };
 };
-const actGetListCartItemSuccess = (data) => {
+export const actGetListCartItemSuccess = (data) => {
   return { type: ActionType.GET_LIST_CART_ITEM_SUCCESS, payload: data };
 };
 const actGetListCartItemFailed = (error) => {
