@@ -12,15 +12,12 @@ Pagination.defaultProps = {
 
 function Pagination(props) {
     const { pagination, onPageChange } = props;
-<<<<<<< HEAD
 
-    const { page, totalPages } = pagination;
-=======
     const { page, totalRows } = pagination;
     const totalPages = Math.ceil(totalRows / 12);
     console.log(totalRows);
     console.log(totalPages)
->>>>>>> 9d323175093deb610f90e18ac99d60778a9c1b0a
+
 
 
     function handlePageChange(newPage) {
