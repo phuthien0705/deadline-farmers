@@ -12,7 +12,6 @@ import axios from "axios";
 
 function App() {
   useEffect(() => {
-    console.log("Mounted");
     const timerId = setInterval(() => {
       const token = JSON.parse(localStorage.getItem("token"));
       if (token)
@@ -29,12 +28,9 @@ function App() {
           .catch((error) => {
             console.log(error);
           });
-      console.log("interval runing");
     }, 10800000);
     return () => {
       clearInterval(timerId);
-      alert("clear interval");
-      console.log("clean interval");
     };
   }, []);
 

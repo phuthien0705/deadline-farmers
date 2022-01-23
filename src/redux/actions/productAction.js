@@ -16,7 +16,7 @@ export const actFetchListProduct = () => {
     })
       .then((res) => {
         console.log(res.data.products);
-        dispatch(actGetListProductSucceess(res.data.products));
+        dispatch(actGetListProductSuccess(res.data.products));
       })
       .catch((error) => {
         console.log(error);
@@ -28,7 +28,7 @@ export const actFetchListProduct = () => {
 const actGetListProductRequest = () => {
   return { type: ActionType.GET_LIST_PRODUCT_REQUEST };
 };
-const actGetListProductSucceess = (data) => {
+const actGetListProductSuccess = (data) => {
   return { type: ActionType.GET_LIST_PRODUCT_SUCCESS, payload: data };
 };
 const actGetListProductFailed = (error) => {

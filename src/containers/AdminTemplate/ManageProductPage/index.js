@@ -119,7 +119,6 @@ const ManageProductPage = () => {
   const [productEdit, setProductEdit] = useState(null);
   const loading = useSelector((state) => state.productReducer.loading);
   const data = useSelector((state) => state.productReducer.data);
-  console.log("re-render", data);
   useEffect(() => {
     dispatch(actFetchListProduct());
   }, []);
