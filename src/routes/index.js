@@ -1,4 +1,4 @@
-import ManageProductPage from "../containers/AdminTemplate/ManageProdcutPage";
+import ManageProductPage from "../containers/AdminTemplate/ManageProductPage";
 import CartPage from "../containers/HomeTemplate/CartPage";
 import DetailPage from "../containers/HomeTemplate/DetailPage";
 import HomePage from "../containers/HomeTemplate/HomePage";

@@ -4,10 +4,10 @@ import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
+import jwt from "jwt-decode";
 
 const Navbar = (props) => {
   const history = useHistory();
-
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -62,6 +62,8 @@ const Navbar = (props) => {
         timerProgressBar: true,
       });
   };
+  const token = JSON.parse(localStorage.getItem("token")).accessToken;
+  const decodeToken = jwt(token);
   return (
     <div>
       <nav id="header" className="w-full z-30 top-0 py-1">
@@ -155,6 +157,15 @@ const Navbar = (props) => {
                     "aria-labelledby": "basic-button",
                   }}
                 >
+                  {decodeToken.role && (
+                    <MenuItem
+                      onClick={() => {
+                        history.push("/manage-product");
+                      }}
+                    >
+                      Manage Product
+                    </MenuItem>
+                  )}
                   <MenuItem
                     onClick={() => {
                       handleClose();
