@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { actFetchListProduct } from "./../../../redux/actions/productAction";
+import { actFetchListProduct } from "../../../redux/actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
 import Swal from "sweetalert2";
@@ -95,6 +95,7 @@ const StyledTableCell = withStyles((theme) => ({
 const StyledTableCellBody = withStyles((theme) => ({
   root: {
     fontSize: "0.75rem",
+    textOverflow: "ellipsis",
   },
 }))(TableCell);
 const StyledTableRow = withStyles((theme) => ({
@@ -114,7 +115,6 @@ const ManageProductPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [listProduct, setListProduct] = useState([]);
-  const [keyWord, setKeyWord] = useState("");
   const [open, setOpen] = useState(false);
   const [productEdit, setProductEdit] = useState(null);
   const loading = useSelector((state) => state.productReducer.loading);
@@ -186,18 +186,6 @@ const ManageProductPage = () => {
             >
               Add Product
             </Button>
-            <TextField
-              onChange={(e) => setKeyWord(e.target.value)}
-              id="input-with-icon-grid"
-              label="Find here"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
-              }}
-            />
           </div>
           <TableContainer
             component={Paper}

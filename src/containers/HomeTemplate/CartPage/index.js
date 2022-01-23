@@ -9,6 +9,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { URL_ADD_ORDER, URL_UPDATE_CART } from "./../../../redux/urlAPI";
 import axios from "axios";
 import Swal from "sweetalert2";
+
 const PaymentDiv = styled.div({
   position: "fixed",
   bottom: 0,
@@ -62,11 +63,11 @@ const CartPage = () => {
   //   });
   // }, [data]);
   const _findIndex = (id) => {
-    return listCart.findIndex((item) => item.productId === id);
+    return listCart.findIndex((item) => item._id === id);
   };
   const handleUpdateQuantity = (product, flag) => {
     let newListCart = [...listCart];
-    const index = _findIndex(product.productId);
+    const index = _findIndex(product._id);
     if (index !== -1) {
       if (flag) {
         newListCart[index].quantity++;
