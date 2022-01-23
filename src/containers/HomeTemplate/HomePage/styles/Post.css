@@ -30,7 +30,7 @@
   box-shadow: 0px 0px 20px -5px;
   transform: scale(1.01);
 }
-.post-author, .post-title {
+.post-title, .post-category, .post-price {
   margin: 1rem;
 }
 

@@ -17,13 +17,11 @@ function PostList(props) {
         <div>
             <ul className="post-list grid grid-cols-2 mt-5">
                 {posts.map(post => (
-                    <li key={post.id} className="post">
-                        <img src={post.imageUrl} alt="" />
-                        <Link to={`/detail/${post.id}`}>
-
-                        <h2 className='post-title'>{post.title}</h2>
-                        </Link>
-                        <h4 className='post-author'>{post.author}</h4>
+                    <li key={post._id} className="post">
+                        <img src={post.image} alt="" />
+                        <h2 className='post-title'>Name: {post.name}</h2>
+                        <h4 className='post-category'>Category: {post.category}</h4>
+                        <h4 className='post-price'>Price: {post.price}</h4>
                         <button className='post-add'>Add to cart</button>
                     </li>
                 ))}
