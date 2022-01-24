@@ -16,7 +16,7 @@ class Product extends Component {
               /> 
             </div>
             <div className="ml-4">
-              <div className="text-sm font-medium text-gray-900">
+              <div className="text-sm font-medium text-gray-900 truncate  ">
                 {this.props.product.name}
               </div>
             </div>
@@ -71,7 +71,9 @@ class PurchasedPage extends Component {
 
   render() {
     return (
+      
       <div className="flex flex-col">
+        <h3 className="text-center text-2xl font-bold">Purchased Products </h3>
         <div className="-my-2 overflow-x-auto  sm:-mx-6 lg:-mx-8">
           <div className="py-2  align-middle  md:w-[70%] w-[90%] m-auto sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200  sm:rounded-lg">
