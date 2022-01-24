@@ -180,7 +180,7 @@
 }
 
 .detail-content {
-  width: 50%;
+  width: 70%;
 }
 @media (max-width: 900px) {
   .detail-container {

@@ -8,16 +8,16 @@ class Product extends Component {
       <tr className="rounded-full m-3">
         <td className="px-6 py-4 whitespace-nowrap">
           <div className="flex items-center">
-            {/* <div className="flex-shrink-0 h-10 w-10 hidden md:inline">
-              <img
-                className=" vh-10 w-10 rounded-full"
+            <div className="flex-shrink-0 h-10 w-10  md:inline">
+               <img
+                className=" vh-10 w-10 rounded"
                 src={this.props.product.image}
                 alt=""
-              />
-            </div> */}
+              /> 
+            </div>
             <div className="ml-4">
-              <div className="text-sm font-medium text-gray-900">
-                {this.props.product.productId}
+              <div className="text-sm font-medium text-gray-900 truncate  ">
+                {this.props.product.name}
               </div>
             </div>
           </div>
@@ -27,7 +27,7 @@ class Product extends Component {
         </td>
 
         <td className="px-6 py-4 whitespace-nowrap">
-          {this.props.product.price}
+          {this.props.product.price*this.props.product.quantity}
         </td>
       </tr>
     );
@@ -49,7 +49,7 @@ class PurchasedPage extends Component {
         },
       })
         .then((res) => {
-          console.log(res.data.order);
+          console.log(res.data);
 
           this.setState({ orders: res.data.order });
         })
@@ -71,9 +71,11 @@ class PurchasedPage extends Component {
 
   render() {
     return (
+      
       <div className="flex flex-col">
+        <h3 className="text-center text-2xl font-bold">Purchased Products </h3>
         <div className="-my-2 overflow-x-auto  sm:-mx-6 lg:-mx-8">
-          <div className="py-2  align-middle  w-[70%] m-auto sm:px-6 lg:px-8">
+          <div className="py-2  align-middle  md:w-[70%] w-[90%] m-auto sm:px-6 lg:px-8">
             <div className="shadow overflow-hidden border-b border-gray-200  sm:rounded-lg">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
