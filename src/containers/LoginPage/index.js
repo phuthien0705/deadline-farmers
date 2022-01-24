@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallBack } from "react";
 import axios from "axios";
 import "./style/Reset.css";
 import "./style/Login.css";
@@ -31,8 +31,6 @@ const LoginPage = (props) => {
         url: URL_SIGN_UP,
         data: { ...user },
       });
-
-      console.log(res.data);
       localStorage.setItem("token", JSON.stringify(res.data.token));
       console.log("login success");
       const cart = await axios({
