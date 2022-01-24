@@ -74,7 +74,7 @@ function RegisterPage() {
   return (
     <div class="signup">
       <div class="signup__left">
-        <h1 class="signup__title">Sign up</h1>
+        <h1 class="signup__title">Register</h1>
         <h2 class="signup__desc">Start for free</h2>
         <form onSubmit={registerSubmit} id="signup__form" class="signup__form">
           <div class="signup__information">
@@ -184,12 +184,12 @@ function RegisterPage() {
             value="Submit"
             class="signup__button"
           >
-            Sign up
+            Register
           </button>
         </form>
         <div class="signup__redirect">
           Already have an account?
-          <Link to="../login"> Sign in</Link>
+          <Link to="../login"> Login</Link>
         </div>
       </div>
       <div class="signup__right">
