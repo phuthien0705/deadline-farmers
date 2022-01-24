@@ -1,0 +1,32 @@
+@media screen and (max-width: 1149px) {
+  .signup__username, .signup__fullname {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1023px) {
+  .signup__left {
+    width: 100%;
+  }
+  .signup__right {
+    display: none;
+  }
+}
+@media screen and (max-width: 392px) {
+  .signup__redirect a {
+    display: block;
+  }
+}
+@media screen and (max-width: 359px) {
+  .signup__title {
+    text-align: center;
+  }
+  .signup__desc {
+    color: white;
+    padding: 0;
+  }
+  .signup__desc:before {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=Responsive.css.map */

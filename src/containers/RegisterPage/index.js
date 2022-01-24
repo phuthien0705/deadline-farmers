@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./style/Reset.css";
 import "./style/Signup.css";
+import "./style/Responsive.css";
 import signupLogo from "./src/Book lover-bro.png";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Swal from "sweetalert2";
