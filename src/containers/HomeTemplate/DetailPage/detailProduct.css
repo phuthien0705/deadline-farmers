@@ -17,7 +17,7 @@
 }
 
 .u-section-1 .u-container-layout-1 {
-  box-shadow: 2px 0 0 0 rgba(0,0,0,0);
+  box-shadow: 2px 0 0 0 rgba(0, 0, 0, 0);
   padding: 0 30px;
 }
 
@@ -109,44 +109,53 @@
 
 .u-section-1 .u-image-1,
 .u-section-1 .u-image-1:before {
-  transition-property: fill, color, background-color, stroke-width, border-style, border-width, box-shadow, text-shadow, opacity, border-radius, stroke, border-color, font-size, font-style, font-weight, text-decoration, letter-spacing, transform, background-image, background-size, background-position;
+  transition-property: fill, color, background-color, stroke-width, border-style,
+    border-width, box-shadow, text-shadow, opacity, border-radius, stroke,
+    border-color, font-size, font-style, font-weight, text-decoration,
+    letter-spacing, transform, background-image, background-size,
+    background-position;
 }
 
 .u-section-1 .u-image-1.u-image-1.u-image-1:hover {
-  box-shadow: 2px 2px 8px 0 rgba(128,128,128,1) !important;
+  box-shadow: 2px 2px 8px 0 rgba(128, 128, 128, 1) !important;
 }
 
 .u-section-1 .u-image-1.u-image-1.u-image-1.hover {
-  box-shadow: 2px 2px 8px 0 rgba(128,128,128,1) !important;
+  box-shadow: 2px 2px 8px 0 rgba(128, 128, 128, 1) !important;
 }
-   .product-price {
-    display: flex;
-    align-items: center;
-    margin-top:24px;
-    margin-left: 12%;
-    
+.product-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 23px 60px 0 38px;
+}
+
+.product-price span {
+  font-size: 26px;
+  font-weight: 300;
+  background-color: #7de445;
+  color: #43474d;
+  padding: 3px;
+
+  border: 5px outset #41eb31;
+}
+.cart-btn {
+  width: 50%;
+  display: inline-block;
+  background-color: #7dc855;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 30px;
+  transition: all 0.5s;
+}
+.cart-btn:hover {
+  background-color: #64af3d;
+}
+@media (max-width: 1200px) {
+  .product-price {
+    margin: 0;
+    margin-top: 2rem;
   }
-   
-  .product-price span {
-    font-size: 26px;
-    font-weight: 300;
-    background-color: #7de445;
-    color: #43474D;
-    padding: 3px;
-    margin-right: 20px;
-    border: 5px outset #41eb31;
-  }
-  .cart-btn {
-    display: inline-block;
-    background-color: #7DC855;
-    border-radius: 6px;
-    font-size: 16px;
-    color: #FFFFFF;
-    text-decoration: none;
-    padding: 12px 30px;
-    transition: all .5s;
-    margin-left: 30%;
-  }
-  .cart-btn:hover {
-    background-color: #64af3d;
-  }
+}
