@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./detailProduct.css";
-import "./lib_css.css";
+// import "./lib_css.css";
 import { RatingStar } from "rating-star";
+import Snackbar from "@mui/material/Snackbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import Swal from "sweetalert2";
 function DetailPage(props) {
+  const [open, setOpen] = useState(false);
   const { id } = props.match.params;
   const [detailProduct, setDetailProduct] = useState({});
   useEffect(() => {
@@ -25,6 +30,19 @@ function DetailPage(props) {
   };
   const handleAddCart = () => {
     const listCart = JSON.parse(localStorage.getItem("listCart"));
+    if (!listCart) {
+      Swal.fire({
+        width: "400",
+        height: "100",
+        backdrop: "none",
+        showCloseButton: true,
+        icon: "warning",
+        title: 'Login to be able to add products to your cart :">',
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true,
+      });
+    }
     let newListCart = [...listCart];
     const index = _findIndex(detailProduct._id);
     if (index !== -1) {
@@ -32,8 +50,28 @@ function DetailPage(props) {
     } else {
       newListCart.push({ ...detailProduct, quantity: 1 });
     }
+    setOpen(true);
     localStorage.setItem("listCart", JSON.stringify(newListCart));
   };
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+  const action = (
+    <React.Fragment>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
   return (
     <section class="u-clearfix u-section-1" id="sec-fcde">
       <div class="u-clearfix u-sheet u-sheet-1">
@@ -65,7 +103,7 @@ function DetailPage(props) {
                   <p class="u-text u-text-2">
                     <p class="u-text u-text-2 ">{detailProduct.description}</p>
                   </p>
-                  <div class="produt-price ml-28">
+                  <div class="product-price ml-28">
                     <span>{detailProduct.price}$</span>
                     <button className="cart-btn" onClick={handleAddCart}>
                       Add to cart
@@ -77,6 +115,13 @@ function DetailPage(props) {
           </div>
         </div>
       </div>
+      <Snackbar
+        open={open}
+        autoHideDuration={2000}
+        onClose={handleClose}
+        message="Added to cart"
+        action={action}
+      />
     </section>
   );
 }
