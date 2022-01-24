@@ -112,7 +112,6 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 const ManageProductPage = () => {
-  console.log("manage-page re-render");
   const classes = useStyles();
   const dispatch = useDispatch();
   const [listProduct, setListProduct] = useState([]);
