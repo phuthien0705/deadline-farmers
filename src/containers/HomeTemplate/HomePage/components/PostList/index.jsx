@@ -38,7 +38,6 @@ function PostList(props) {
         timerProgressBar: true,
       });
     }
-    console.log(post);
     let newListCart = [...listCart];
     const index = _findIndex(post._id);
     console.log("index", index);
