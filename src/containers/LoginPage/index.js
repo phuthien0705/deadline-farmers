@@ -72,7 +72,7 @@ const LoginPage = (props) => {
   return (
     <div className="login">
       <div className="login__left">
-        <h1 className="login__title">Sign in</h1>
+        <h1 className="login__title">Login</h1>
         <h2 className="login__desc">Welcome to Deadline Farmers</h2>
         <form
           autoComplete="off"
@@ -124,7 +124,7 @@ const LoginPage = (props) => {
             value="Submit"
             className="login__button"
           >
-            Sign in
+            Login
           </button>
         </form>
         <div className="login__redirect">
