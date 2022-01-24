@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./detailProduct.css";
-
 // import "./lib_css.css";
 import { RatingStar } from "rating-star";
 import Snackbar from "@mui/material/Snackbar";

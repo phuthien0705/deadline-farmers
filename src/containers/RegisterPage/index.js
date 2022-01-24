@@ -145,7 +145,6 @@ function RegisterPage() {
                 type="number"
                 name="Phone_number"
                 id="phone"
-                pattern="[0-9]{4} [0-9]{3} [0-9]{3}"
                 placeholder="Phone number"
                 class="signup__input"
                 defaultValue={user.Phone_number}
