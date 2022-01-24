@@ -34,7 +34,7 @@ function PostList(props) {
 
   return (
     <div>
-      <ul className="post-list grid grid-cols-3 mt-5">
+      <ul className="post-list grid md:grid-cols-3 mt-5 grid-cols-2">
         {posts.map((post) => (
           <li key={post._id} className="post">
             <Link to={`/detail/${post._id}`}>

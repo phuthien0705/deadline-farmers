@@ -4,8 +4,10 @@ body {
 }
 
 .sidebar {
+  width: 25%;
   height: 100vh;
   margin: 1.5rem;
+  padding: 1rem;
   background: #ef7d6d;
   background: linear-gradient(90deg, #ef7d6d 0%, #ca41fc 100%);
   border-radius: 0.5rem;
@@ -54,6 +56,21 @@ body {
 .sidebar li:hover {
   background-color: white;
   color: #EF7D6D;
+}
+
+.toggleSidebar {
+  position: absolute;
+  z-index: 998;
+  right: 0;
+  top: 0;
+  transform: translate(100%, 50%);
+  width: 2.5rem;
+  padding: 0.5rem;
+  background-color: #fff;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  box-shadow: 0px 0px 25px -10px;
+  transition: all 0.1s linear;
 }
 
 /*# sourceMappingURL=Sidebar.css.map */

@@ -1,0 +1,30 @@
+@media screen and (max-width: 1023px) {
+  .sidebar {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    padding-top: 2rem;
+    border-radius: 0;
+    transition: all 0.1s linear;
+  }
+
+  .non-active {
+    width: 0 !important;
+    padding: 0 !important;
+  }
+  .non-active .sidebar__title {
+    display: none;
+  }
+  .non-active ul {
+    display: none;
+  }
+  .non-active .toggleSidebar {
+    top: 20%;
+  }
+}
+
+/*# sourceMappingURL=Responsive.css.map */
