@@ -107,9 +107,9 @@ const CartPage = () => {
       console.log(purchasedArr);
       const order = [];
       listCart.forEach((item) => {
-        if (purchasedArr.includes(item.productId))
+        if (purchasedArr.includes(item._id))
           order.push({
-            productId: item.productId,
+            productId: item._id,
             quantity: item.quantity,
             price: item.price,
           });
