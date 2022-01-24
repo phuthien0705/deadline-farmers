@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import "../../styles/Post.css";
 import { Link } from "react-router-dom";
 import { RatingStar } from "rating-star";
-import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";

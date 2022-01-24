@@ -2,8 +2,13 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./detailProduct.css";
 import { RatingStar } from "rating-star";
+import Swal from "sweetalert2";
+import Snackbar from "@mui/material/Snackbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 function DetailPage(props) {
   const { id } = props.match.params;
+  const [open, setOpen] = useState(false);
   const [detailProduct, setDetailProduct] = useState({});
   useEffect(() => {
     axios({
@@ -24,6 +29,19 @@ function DetailPage(props) {
   };
   const handleAddCart = () => {
     const listCart = JSON.parse(localStorage.getItem("listCart"));
+    if (!listCart) {
+      Swal.fire({
+        width: "400",
+        height: "100",
+        backdrop: "none",
+        showCloseButton: true,
+        icon: "warning",
+        title: 'Login to be able to add products to your cart :">',
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true,
+      });
+    }
     let newListCart = [...listCart];
     const index = _findIndex(detailProduct._id);
     if (index !== -1) {
@@ -31,12 +49,34 @@ function DetailPage(props) {
     } else {
       newListCart.push({ ...detailProduct, quantity: 1 });
     }
+    setOpen(true);
     localStorage.setItem("listCart", JSON.stringify(newListCart));
   };
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
+  const action = (
+    <React.Fragment>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
   return (
-    <section class=" u-border-grey-75 u-clearfix u-section-1 grid grid-cols-3   " id="sec-5467">
-      <div>
-      </div>
+    <section
+      class=" u-border-grey-75 u-clearfix u-section-1 grid grid-cols-3   "
+      id="sec-5467"
+    >
+      <div></div>
       <div class="u-clearfix u-sheet u-sheet-1  ">
         <div class="u-clearfix u-expanded-width u-gutter-34 u-layout-wrap u-layout-wrap-1 ">
           <div class="u-layout">
@@ -57,11 +97,11 @@ function DetailPage(props) {
                   </h2>
                   <div class="ml-12 mb-2">
                     Rating:
-                  <RatingStar
-                    maxScore={5}
-                    id={detailProduct._id}
-                    rating={detailProduct.rating}
-                  />
+                    <RatingStar
+                      maxScore={5}
+                      id={detailProduct._id}
+                      rating={detailProduct.rating}
+                    />
                   </div>
                   <p class="u-text u-text-2 ">{detailProduct.description}</p>
                   <div class="product-price">
@@ -76,6 +116,13 @@ function DetailPage(props) {
           </div>
         </div>
       </div>
+      <Snackbar
+        open={open}
+        autoHideDuration={2000}
+        onClose={handleClose}
+        message="Added to cart"
+        action={action}
+      />
     </section>
   );
 }
