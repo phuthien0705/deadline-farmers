@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -57,6 +57,7 @@ const DialogContent = withStyles((theme) => ({
   },
 }))(MuiDialogContent);
 const Modal = ({ open, productEdit, closeModal }) => {
+  console.log("re-render");
   const classes = useStyles();
   const dispatch = useDispatch();
   const [avatar, setAvatar] = useState();
@@ -359,4 +360,4 @@ const Modal = ({ open, productEdit, closeModal }) => {
   );
 };
 
-export default Modal;
+export default memo(Modal);
