@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -359,4 +359,4 @@ const Modal = ({ open, productEdit, closeModal }) => {
   );
 };
 
-export default Modal;
+export default memo(Modal);

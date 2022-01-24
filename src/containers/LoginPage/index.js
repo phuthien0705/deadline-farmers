@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallBack } from "react";
 import axios from "axios";
 import "./style/Reset.css";
 import "./style/Login.css";
@@ -7,7 +7,6 @@ import RegisterPage from "../RegisterPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { URL_GET_LIST_CART_ITEM, URL_SIGN_UP } from "../../redux/urlAPI";
-import { actGetListCartItemSuccess } from "./../../redux/actions/cartAction";
 import { useSelector, useDispatch } from "react-redux";
 
 const LoginPage = (props) => {
@@ -31,8 +30,6 @@ const LoginPage = (props) => {
         url: URL_SIGN_UP,
         data: { ...user },
       });
-
-      console.log(res.data);
       localStorage.setItem("token", JSON.stringify(res.data.token));
       console.log("login success");
       const cart = await axios({
@@ -51,15 +48,24 @@ const LoginPage = (props) => {
         backdrop: "none",
         showCloseButton: true,
         icon: "success",
-        title: "Đăng nhập thành công",
+        title: "Login success!",
         showConfirmButton: false,
         timer: 2500,
         timerProgressBar: true,
       });
       props.history.replace("/");
     } catch (err) {
-      console.log(err);
-      alert(err);
+      Swal.fire({
+        width: "400",
+        height: "100",
+        backdrop: "none",
+        showCloseButton: true,
+        icon: "error",
+        title: "User account or password incorrect :((",
+        showConfirmButton: false,
+        timer: 2500,
+        timerProgressBar: true,
+      });
     }
   };
   return (

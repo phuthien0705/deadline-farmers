@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { actFetchListProduct } from "../../../redux/actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
@@ -142,9 +142,9 @@ const ManageProductPage = () => {
   const handleClickOpen = () => {
     setOpen(true);
   };
-  const handleClose = (info) => {
+  const handleClose = useCallback((info) => {
     setOpen(info);
-  };
+  });
   //--------------------------------------------------------------------------
   const handleDeleteProduct = (product) => {
     actDeleteProduct(product)
