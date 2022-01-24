@@ -68,8 +68,8 @@ const Navbar = (props) => {
   if (token) decodeToken = jwt(token);
   else decodeToken = { role: false };
   return (
-    <div >
-      <nav id="header" className="w-full z-30 top-0 py-1" class="text-6xl" >
+    <div>
+      <nav id="header" className="w-full z-30 top-0 py-1" class="text-6xl">
         <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
           <label
             htmlFor="menu-toggle"
@@ -113,7 +113,7 @@ const Navbar = (props) => {
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-[24px]  w-[24px]"
+                className="h-[48px]  w-[48px]"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -123,7 +123,6 @@ const Navbar = (props) => {
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-                
                 />
               </svg>
               Deadline Farmers
