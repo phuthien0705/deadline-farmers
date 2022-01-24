@@ -71,21 +71,7 @@ const Navbar = (props) => {
     <div>
       <nav id="header" className="w-full z-30 top-0 py-1" class="text-6xl">
         <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3">
-          <label
-            htmlFor="menu-toggle"
-            className="cursor-pointer md:hidden block"
-          >
-            <svg
-              className="fill-current text-gray-900"
-              xmlns="http://www.w3.org/2000/svg"
-              width={20}
-              height={20}
-              viewBox="0 0 20 20"
-            >
-              <title>menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
-          </label>
+          
           <input className="hidden" type="checkbox" id="menu-toggle" />
           <div
             className="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1"
@@ -95,7 +81,7 @@ const Navbar = (props) => {
               <ul className="md:flex items-center justify-between text-base text-gray-700 pt-4 md:pt-0">
                 <li>
                   <a
-                    className="inline-block no-underline hover:text-black hover:underline py-2 px-4 font-bold text-gray-800 text-5xl pl-5"
+                    className="inline-block no-underline hover:text-black hover:underline py-2 px-4 font-bold text-gray-800 text-3xl pl-5"
                     href="/"
                     style={{ textDecoration: "none" }}
                   >
@@ -108,12 +94,12 @@ const Navbar = (props) => {
           </div>
           <div className="order-1 md:order-2">
             <a
-              className="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-5xl "
+              className="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl lg:text-3xl "
               href="/"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-[48px]  w-[48px]"
+                className="h-8 "
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -135,7 +121,7 @@ const Navbar = (props) => {
             {localStorage.getItem("token") ? (
               <>
                 <div
-                  className="inline-block no-underline hover:text-black flex flex-col items-center"
+                  className="no-underline hover:text-black flex flex-col items-center"
                   href="/login"
                   onClick={handleClick}
                 >
