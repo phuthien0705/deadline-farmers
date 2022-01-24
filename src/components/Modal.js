@@ -57,7 +57,6 @@ const DialogContent = withStyles((theme) => ({
   },
 }))(MuiDialogContent);
 const Modal = ({ open, productEdit, closeModal }) => {
-  console.log("re-render");
   const classes = useStyles();
   const dispatch = useDispatch();
   const [avatar, setAvatar] = useState();
