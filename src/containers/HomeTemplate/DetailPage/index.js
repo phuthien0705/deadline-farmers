@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./detailProduct.css";
-import "./lib_css.css";
+//import "./lib_css.css";
 import { RatingStar } from "rating-star";
 function DetailPage(props) {
   const { id } = props.match.params;
