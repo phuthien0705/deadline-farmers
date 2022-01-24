@@ -1,3 +1,7 @@
+/* section {
+  font-family: Poppins !important;
+} */
+
 .u-section-1 .u-sheet-1 {
   min-height: 500px;
 }
@@ -6,41 +10,35 @@
   margin-top: 60px;
   margin-bottom: 60px;
   position: relative;
+  min-height: 400px;
 }
 
 .u-section-1 .u-image-1 {
-  min-height: 430px;
+  min-height: 434px;
 
   transition-duration: 0.5s;
-  background-position: 50% 50%;
+  background-position: 30% 30%;
 }
 
 .u-section-1 .u-container-layout-1 {
   box-shadow: 2px 0 0 0 rgba(0, 0, 0, 0);
-  padding: 30px;
+  padding: 0 30px;
 }
 
 .u-section-1 .u-layout-cell-2 {
-  min-height: 430px;
+  min-height: 434px;
 }
 
 .u-section-1 .u-container-layout-2 {
-  padding: 30px;
+  padding: 30px 8px;
 }
 
 .u-section-1 .u-text-1 {
-  transition-duration: 0.5s;
-  text-shadow: 2px 0 0 rgba(0, 0, 0, 0);
-  margin: 23px auto 0 29px;
+  margin: 50px auto 0 45px;
 }
 
 .u-section-1 .u-text-2 {
-  text-shadow: 2px 0 0 rgba(0, 0, 0, 0);
-  margin: 29px 0 0 29px;
-}
-
-.u-section-1 .u-text-3 {
-  margin: 79px 295px 0 69px;
+  margin: 23px 60px 0 38px;
 }
 
 @media (max-width: 1199px) {
@@ -48,17 +46,21 @@
     min-height: 430px;
   }
 
+  .u-section-1 .u-layout-wrap-1 {
+    min-height: 248px;
+  }
+
   .u-section-1 .u-image-1 {
-    min-height: 355px;
+    min-height: 358px;
   }
 
   .u-section-1 .u-layout-cell-2 {
-    min-height: 355px;
+    min-height: 358px;
   }
 
-  .u-section-1 .u-text-3 {
-    margin-right: 245px;
-    margin-left: 19px;
+  .u-section-1 .u-text-2 {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -68,16 +70,11 @@
   }
 
   .u-section-1 .u-image-1 {
-    min-height: 272px;
+    min-height: 274px;
   }
 
   .u-section-1 .u-layout-cell-2 {
     min-height: 100px;
-  }
-
-  .u-section-1 .u-text-3 {
-    margin-right: 154px;
-    margin-left: 0;
   }
 }
 
@@ -86,16 +83,15 @@
     min-height: 580px;
   }
 
+  .u-section-1 .u-layout-wrap-1 {
+    min-height: 385px;
+  }
+
   .u-section-1 .u-image-1 {
-    min-height: 408px;
+    min-height: 411px;
   }
 
   .u-section-1 .u-container-layout-1 {
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  .u-section-1 .u-container-layout-2 {
     padding-left: 10px;
     padding-right: 10px;
   }
@@ -106,12 +102,12 @@
     min-height: 439px;
   }
 
-  .u-section-1 .u-image-1 {
-    min-height: 257px;
+  .u-section-1 .u-layout-wrap-1 {
+    min-height: 233px;
   }
 
-  .u-section-1 .u-text-3 {
-    margin-right: 0;
+  .u-section-1 .u-image-1 {
+    min-height: 259px;
   }
 }
 
@@ -126,58 +122,29 @@
 
 .u-section-1 .u-image-1.u-image-1.u-image-1:hover {
   box-shadow: 2px 2px 8px 0 rgba(128, 128, 128, 1) !important;
-  border-style: solid !important;
-  border-width: 3px !important;
-}
-
-.u-section-1 .u-image-1 {
-  border-style: solid !important;
 }
 
 .u-section-1 .u-image-1.u-image-1.u-image-1.hover {
   box-shadow: 2px 2px 8px 0 rgba(128, 128, 128, 1) !important;
-  border-style: solid !important;
-  border-width: 3px !important;
 }
-
-.u-section-1 .u-image-1 {
-  border-style: solid !important;
-}
-
-.u-section-1 .u-text-1,
-.u-section-1 .u-text-1:before {
-  transition-property: fill, color, background-color, stroke-width, border-style,
-    border-width, box-shadow, text-shadow, opacity, border-radius, stroke,
-    border-color, font-size, font-style, font-weight, text-decoration,
-    letter-spacing, transform, background-image, background-size,
-    background-position;
-}
-
-.u-section-1 .u-text-1.u-text-1.u-text-1:hover {
-  text-shadow: 0 0 8px rgba(128, 128, 128, 1) !important;
-}
-
-.u-section-1 .u-text-1.u-text-1.u-text-1.hover {
-  text-shadow: 0 0 8px rgba(128, 128, 128, 1) !important;
-}
-.u-container-layout .u-container-layout-2 .product-price {
+.product-price {
   display: flex;
   align-items: center;
-  margin-top: 24px;
-  margin-left: 50px;
-  padding-left: 24%;
+  justify-content: space-between;
+  margin: 23px 60px 0 38px;
 }
 
-div .product-price span {
+.product-price span {
   font-size: 26px;
   font-weight: 300;
   background-color: #7de445;
   color: #43474d;
   padding: 3px;
-  margin-right: 20px;
+
   border: 5px outset #41eb31;
 }
 .cart-btn {
+  width: 50%;
   display: inline-block;
   background-color: #7dc855;
   border-radius: 6px;
@@ -186,8 +153,13 @@ div .product-price span {
   text-decoration: none;
   padding: 12px 30px;
   transition: all 0.5s;
-  margin-left: 30%;
 }
 .cart-btn:hover {
   background-color: #64af3d;
+}
+@media (max-width: 1200px) {
+  .product-price {
+    margin: 0;
+    margin-top: 2rem;
+  }
 }
