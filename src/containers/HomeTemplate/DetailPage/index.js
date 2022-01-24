@@ -73,26 +73,46 @@ function DetailPage(props) {
     </React.Fragment>
   );
   return (
-    <section class="u-clearfix u-section-1" id="sec-fcde">
-      <div class="u-clearfix u-sheet u-sheet-1">
+    <section
+      class="u-clearfix u-section-1"
+      id="sec-fcde"
+      style={{
+        display: "flex",
+      }}
+    >
+      <div
+        class="u-clearfix u-sheet u-sheet-1"
+        style={{ width: "80%", margin: "auto" }}
+      >
         <div class="u-clearfix u-expanded-width u-gutter-30 u-layout-wrap u-layout-wrap-1">
           <div class="u-layout">
-            <div class="u-layout-row">
+            <div class="u-layout-row" className="detail-container">
               <div
                 class="u-container-style u-image u-layout-cell u-size-30 u-image-1"
                 data-image-width="800"
                 data-image-height="533"
+                style={{
+                  width: "fit-content",
+                  margin: "auto",
+                  padding: "1.5rem 0 1.5rem 0",
+                }}
               >
-                <div class="u-border-2 u-border-palette-1-light-1 u-container-layout u-container-layout-1 flex justify-center">
+                <div
+                  class="u-border-2 u-border-palette-1-light-1 u-container-layout u-container-layout-1 flex justify-center"
+                  style={{ width: "fit-content" }}
+                >
                   <img src={detailProduct.image} alt="" />
                 </div>
               </div>
-              <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+              <div
+                class="u-container-style u-layout-cell u-size-30 u-layout-cell-2"
+                className="detail-content"
+              >
                 <div class="u-container-layout u-container-layout-2">
-                  <h3 class="u-text u-text-default u-text-1">
+                  <h3 class="u-text u-text-default u-text-1" className="name">
                     {detailProduct.name}
                   </h3>
-                  <div class="ml-12 mb-2">
+                  <div class="ml-12 mb-2" className="rating">
                     Rating:
                     <RatingStar
                       maxScore={5}
