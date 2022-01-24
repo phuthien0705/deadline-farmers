@@ -1,0 +1,27 @@
+@media screen and (max-width: 1023px) {
+  .login__left {
+    width: 100%;
+  }
+  .login__right {
+    display: none;
+  }
+}
+@media screen and (max-width: 392px) {
+  .login__redirect a {
+    display: block;
+  }
+}
+@media screen and (max-width: 359px) {
+  .login__title {
+    text-align: center;
+  }
+  .login__desc {
+    color: white;
+    padding: 0;
+  }
+  .login__desc:before {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=Responsive.css.map */

@@ -1,0 +1,37 @@
+@media screen and (max-width: 1023px) {
+    .login {
+        &__left {
+            width: 100%;
+        }
+
+        &__right {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 392px) {
+    .login {
+        &__redirect {
+            a {
+                display: block;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 359px) {
+    .login {
+        &__title {
+            text-align: center;
+        }
+
+        &__desc {
+            color: white;
+            padding: 0;
+            &:before {
+                width: 100%;
+            }
+        }
+    }
+}

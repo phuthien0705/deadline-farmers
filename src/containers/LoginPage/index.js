@@ -2,6 +2,7 @@ import React, { useState, useCallBack } from "react";
 import axios from "axios";
 import "./style/Reset.css";
 import "./style/Login.css";
+import "./style/Responsive.css";
 import loginImage from "./src/Startup life-pana.png";
 import RegisterPage from "../RegisterPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
