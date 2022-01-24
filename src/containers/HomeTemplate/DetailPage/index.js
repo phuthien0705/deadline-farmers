@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./detailProduct.css";
-<<<<<<< HEAD
-//import "./lib_css.css";
-=======
+
 // import "./lib_css.css";
->>>>>>> 0203272526278f084abc265ed059bbc69b6de2f8
 import { RatingStar } from "rating-star";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";

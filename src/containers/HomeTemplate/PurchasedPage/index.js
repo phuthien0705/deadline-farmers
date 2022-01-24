@@ -8,16 +8,16 @@ class Product extends Component {
       <tr className="rounded-full m-3">
         <td className="px-6 py-4 whitespace-nowrap">
           <div className="flex items-center">
-            {/* <div className="flex-shrink-0 h-10 w-10 hidden md:inline">
-              <img
+            <div className="flex-shrink-0 h-10 w-10 hidden md:inline">
+              {/* <img
                 className=" vh-10 w-10 rounded-full"
                 src={this.props.product.image}
                 alt=""
-              />
-            </div> */}
+              /> */}
+            </div>
             <div className="ml-4">
               <div className="text-sm font-medium text-gray-900">
-                {this.props.product.productId}
+                {this.props.product.name}
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@ class PurchasedPage extends Component {
         },
       })
         .then((res) => {
-          console.log(res.data.order);
+          console.log(res.data);
 
           this.setState({ orders: res.data.order });
         })
