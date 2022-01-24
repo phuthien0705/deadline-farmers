@@ -190,7 +190,7 @@ const Navbar = (props) => {
             ) : (
               <div className="flex flex-col items-center">
                 <a
-                  className="inline-block no-underline hover:text-black mb-1"
+                  className="inline-block no-underline hover:text-black"
                   href="/login"
                 >
                   {/* User */}
