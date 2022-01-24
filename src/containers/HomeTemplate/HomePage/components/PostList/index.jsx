@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "../../styles/Post.css";
 import { Link } from "react-router-dom";
+import { RatingStar } from "rating-star";
 PostList.propTypes = {
   posts: PropTypes.array,
 };
@@ -37,10 +38,21 @@ function PostList(props) {
         {posts.map((post) => (
           <li key={post._id} className="post">
             <Link to={`/detail/${post._id}`}>
-              <img src={post.image} alt="" />
-              <h2 className="post-title">Name: {post.name}</h2>
-              <h4 className="post-category">Category: {post.category}</h4>
-              <h4 className="post-price">Price: {post.price}</h4>
+              <div className="post-image">
+                <img src={post.image} alt="" />
+              </div>
+              <div className="post-info">
+                <h2 className="post-title">{post.name}</h2>
+                <div className="post-info-desc">
+                  <h4 className="post-category">Category: {post.category}</h4>
+                  <RatingStar
+                    maxScore={5}
+                    id={post._id}
+                    rating={post.rating}
+                  />
+                  <h4 className="post-price">Price: {post.price}$</h4>
+                </div>
+              </div>
             </Link>
             <button className="post-add" onClick={() => handleAddCart(post)}>
               Add to cart

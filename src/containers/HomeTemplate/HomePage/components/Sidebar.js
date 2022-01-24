@@ -21,7 +21,7 @@ const Sidebar = (props) => {
         <li onClick={() => handleCategory("literature")}>Literature </li>
         <li onClick={() => handleCategory("economic")}>Economic</li>
         <li onClick={() => handleCategory("children")}>Children</li>
-        <li onClick={() => handleCategory("life-skill")}>lLife Skill</li>
+        <li onClick={() => handleCategory("life-skill")}>Life Skill</li>
         <li onClick={() => handleCategory("foreign-language")}>
           Foreign Language
         </li>

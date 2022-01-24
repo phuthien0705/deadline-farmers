@@ -43,10 +43,11 @@
   height: 100%;
   object-fit: cover;
 }
-.post-title, .post-category, .post-price {
-  margin: 1rem;
+.post-category, .post-price {
+  margin: 0.5rem;
 }
 .post-title {
+  margin: 1rem 1rem 1.5rem 1rem;
   text-align: center;
   font-size: 1.3rem;
   font-weight: 600;
@@ -57,6 +58,10 @@
 .post-price {
   font-size: 1.2rem;
   font-weight: 600;
+}
+.post .rating-star {
+  padding: 0;
+  margin: 0.5rem;
 }
 
 .pagination button:disabled {

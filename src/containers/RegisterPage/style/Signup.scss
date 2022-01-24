@@ -147,12 +147,11 @@ a {
         font-size: 2.1rem;
         margin: 1rem auto 2rem;
         display: block;
-        background: rgb(239,125,109);
-        background: linear-gradient(90deg, rgba(202,65,252,1) 0%, rgba(239,125,109,1) 100%);
+        background-color: $primary-color;
         color: white;
         border: 0;
         border-radius: 10rem;
-        box-shadow: 0 5px 5px 0px rgb(246 114 93 / 60%);
+        box-shadow: 0 5px 5px 0px rgb(202 65 252 / 60%);
         cursor: pointer;
     }
     &__redirect {
